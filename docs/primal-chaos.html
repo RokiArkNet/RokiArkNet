@@ -68,8 +68,8 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 const CONTENT_URL='https://raw.githubusercontent.com/rokiarknet/RokiArkNet/main/content/primal-chaos.md';
 const NAV_SECTIONS={
   'Overview':['tier-list','getting-started'],
-  'Progression':['toxic-alpha','elemental','shadow-fairy','mythic-fabled-legendary','demonic-angelic','spirit-chaos'],
-  'Reference':['loot-bosses','special-encounters','origin-taming','faq','creature-reference']
+  'Progression':['toxic-alpha','elemental','shadow-fairy','mythic-fabled-legendary','demonic-angelic','spirit-chaos','origins','nightmares'],
+  'Reference':['loot-bosses','special-encounters','faq','creature-reference']
 };
 const SECTION_LABELS={
   'tier-list':'Tier List',
@@ -80,9 +80,10 @@ const SECTION_LABELS={
   'mythic-fabled-legendary':'Mythic / Fabled / Legendary',
   'demonic-angelic':'Demonic & Angelic',
   'spirit-chaos':'Spirit & Chaos',
+  'origins':'Origins',
+  'nightmares':'Nightmares',
   'loot-bosses':'Loot Bosses',
   'special-encounters':'Special Encounters',
-  'origin-taming':'Origin Taming',
   'faq':'FAQ & Tips',
   'creature-reference':'Creature Reference'
 };
@@ -185,7 +186,7 @@ function renderTierDiagram(){
 <line x1="550" y1="56" x2="640" y2="56" stroke="#3a3a50" stroke-width="1"/>
 <line x1="595" y1="56" x2="595" y2="66" stroke="#3a3a50" stroke-width="1" marker-end="url(#ta)"/>
 <!-- Origin -->
-<a href="#origin-taming"><g style="cursor:pointer">
+<a href="#origins"><g style="cursor:pointer">
   <rect x="543" y="66" width="104" height="26" rx="3" fill="#1a1a28" stroke="#e8580a" stroke-width="2"/>
   <text x="595" y="79" text-anchor="middle" dominant-baseline="central" font-family="Orbitron,monospace" font-size="9" font-weight="700" fill="#e8580a">Origin</text>
 </g></a>
@@ -205,7 +206,7 @@ function renderTierDiagram(){
 <line x1="549" y1="140" x2="641" y2="140" stroke="#3a3a50" stroke-width="1"/>
 <line x1="595" y1="140" x2="595" y2="150" stroke="#3a3a50" stroke-width="1" marker-end="url(#ta)"/>
 <!-- Nightmare -->
-<a href="#spirit-chaos"><g style="cursor:pointer">
+<a href="#nightmares"><g style="cursor:pointer">
   <rect x="535" y="150" width="120" height="26" rx="3" fill="#1a1a28" stroke="#9333ea" stroke-width="2"/>
   <text x="595" y="163" text-anchor="middle" dominant-baseline="central" font-family="Orbitron,monospace" font-size="9" font-weight="700" fill="#a855f7">Nightmare</text>
 </g></a>

@@ -219,7 +219,7 @@ The most powerful Origin Boss, summoned with crafted scrolls at the Primal Smith
 
 ## spirit-chaos
 
-The final stretch of Primal Chaos progression brings together Spirit and Chaos creatures, the menace of Nightmares, and the ultimate challenge — the Deathknight.
+Spirit and Chaos creatures represent the pinnacle of standard taming progression. These powerful tames unlock your path to Origins and beyond.
 
 > STRUCTURE DAMAGE: N/A
 
@@ -228,6 +228,72 @@ The final stretch of Primal Chaos progression brings together Spirit and Chaos c
 Defeat the Spirit and Chaos bosses (summoned at the Primal Smithy) to unlock the ability to tame their wild counterparts. Each boss unlocks their respective kibble engram.
 
 > These are among the strongest creatures in the game. Build your final boss team around them.
+
+### Spirit Creatures
+
+High damage output with excellent mobility. Spirit tames excel at quick strikes and repositioning.
+
+### Chaos Creatures
+
+Devastating AOE attacks and crowd control. Chaos tames dominate in prolonged fights against multiple enemies.
+
+> Use Spirit and Chaos kibble to prepare for Origin encounters.
+
+## origins
+
+Origins are elite-tier creatures that bridge the gap between standard progression and the ultimate Nightmare tier.
+
+> STRUCTURE DAMAGE: N/A
+
+### Hunt Primal Creatures
+
+To advance, you'll need Primal Blood — a key ingredient for crafting Origin Tokens.
+
+**Only true Primal creatures drop Primal Blood** — No drops from Tek or Resurrected variants.
+
+> WARNING: Primal creatures apply a Grounded Debuff — flying is completely disabled.
+
+### Defeat Wild Origins
+
+Slaying wild Origin creatures grants Origin Tokens needed to summon Origin bosses.
+
+**Each Origin Kill Rewards** — Origin Token, High-tier materials
+
+> WARNING: These fights are tough — bring fully imprinted, buffed Spirit or Chaos tames with quality saddles and healing potions.
+
+### Boss: Draconis
+
+The most powerful Origin Boss, summoned with crafted scrolls at the Primal Smithy.
+
+**Phase Mechanics** — Activates invulnerable shield at ~90%, ~50%, and ~10% HP. Kill summoned minions to break shields.
+
+**Tameable Draconis** — Chance to drop Tameable Token. Requires Origin Artifact from Mr. Artifact the Original.
+
+> Dodoreapers take 80% reduced damage unless affected by Charged Light — bring a Glowtail or other charge pet.
+
+### Taming Origins
+
+Tameable Origins can only be summoned using Tameable Tokens, dropped by Draconis minions (50% chance).
+
+**Taming Process:**
+
+1. Weaken to 20% health before torpor will affect them
+2. Keep them below 20% until fully knocked out (they heal quickly)
+3. Requires an Origin Artifact to summon (dropped by Mr. Artifact the Original)
+
+### Origin Passive Buffs
+
+**Self** — 30% resistance and 10% healing
+
+**Allies** — 10% resistance and 5% healing
+
+> Origins are powerful support tames that buff your entire army.
+
+## nightmares
+
+Nightmares represent the ultimate tier of Primal Chaos — devastating creatures that can challenge even the Deathknight.
+
+> STRUCTURE DAMAGE: N/A
 
 ### Hunt Primal Resurrected Creatures
 
@@ -239,13 +305,19 @@ Powerful untamable enemies designed to test endgame strength.
 
 ### Nightmare Bosses
 
-Required for unlocking the Deathknight.
+Required for unlocking the Deathknight and obtaining Nightmare Tokens.
 
 **How to Encounter** — Summon using crafted Nightmare Summons (Origin Tokens + Primal Bones) or rare wild spawns.
 
 **Drops** — Nightmare Token (required for Deathknight), high-end tools, armor, and rare mats.
 
-> Origins can be evolved into Nightmares — see the Origin Taming section.
+### Evolving Origins to Nightmares
+
+Craft the Nightmare Evolution item inside the Origin's inventory.
+
+**Required Materials** — Angelic Soul x5, Demonic Soul x5, Nightmare Token x1, Origin Token x1, Primal Blood x300, Primal Soul x1, Tameable Origin Summon x1, Chaos Kibble x1, Fabled Blood x500, Origin Blood x5, Origin Soul x1, Primal Bones x100, Spirit Kibble x1
+
+> WARNING: Your Origin will lose its resistance and healing passives, but gain even greater power as a Nightmare!
 
 ### Boss: Deathknight
 
@@ -253,7 +325,7 @@ The final challenge of Primal Chaos progression.
 
 **Summon** — Crafted using Nightmare Tokens + rare materials
 
-**Fight Mechanics** — Heavy resistance to all damage except from Nightmare creatures. Nightmares are key DPS; Angelics in Berserk Mode can soak massive hits.
+**Fight Mechanics** — Reduces damage from all sources except Nightmare creatures. Nightmares are your key DPS; Angelics in Berserk Mode can soak massive hits with damage absorption.
 
 **Drops** — DK Armor (unbreakable), DK Saddle, Demonic Rocket Launcher (novelty), Tameable Token (10% chance)
 
@@ -306,30 +378,6 @@ Basic version. Drops useful artifacts. Great early game option for gathering bos
 **Origin Artifact** — Used to tame Origins.
 
 > WARNING: Has punishing attacks — requires careful dodging and observation.
-
-## origin-taming
-
-Tameable Origins can only be summoned using Tameable Tokens, dropped by Draconis minions (50% chance).
-
-### Taming Process
-
-1. Weaken to 20% health before torpor will affect them
-2. Keep them below 20% until fully knocked out (they heal quickly)
-3. Requires an Origin Artifact to summon (dropped by Mr. Artifact the Original)
-
-### Origin Passive Buffs
-
-**Self** — 30% resistance and 10% healing
-
-**Allies** — 10% resistance and 5% healing
-
-### Evolving to Nightmare
-
-Craft the Nightmare Evolution item inside the Origin's inventory.
-
-**Required Materials** — Angelic Soul x5, Demonic Soul x5, Nightmare Token x1, Origin Token x1, Primal Blood x300, Primal Soul x1, Tameable Origin Summon x1, Chaos Kibble x1, Fabled Blood x500, Origin Blood x5, Origin Soul x1, Primal Bones x100, Spirit Kibble x1
-
-> WARNING: Your Origin will lose its resistance and healing passives, but gain even greater power as a Nightmare!
 
 ## faq
 
