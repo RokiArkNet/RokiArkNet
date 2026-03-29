@@ -1,6 +1,6 @@
-site_name: RokiArkNet
+site_name: ARK Mod Guides
 site_description: ARK Survival Ascended server guides and mod documentation
-site_url: https://rokiarknet.github.io/RokiArkNet
+site_url: https://rokiarknet.github.io
 
 theme:
   name: material
