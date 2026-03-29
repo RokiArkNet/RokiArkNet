@@ -70,76 +70,69 @@ function renderTierDiagram(){
   const wrap=document.createElement('div');
   wrap.style.cssText='background:#14141e;border:1px solid #2a2a3e;padding:20px 16px 16px;margin:8px 0;overflow-x:auto;';
 
-  // Dimensions
-  const NW=130, NH=28;   // main nodes
-  const SW=108, SH=20;   // skeletal nodes (smaller)
-  const EW=110, EH=24, EGAP=6;  // elementals
-  const PGW=88, PGH=24;  // plasma & ghost (side by side)
-  const PGGAP=6;          // gap between plasma and ghost
-  const PLW=188, PLH=26; // plague — full width spanning plasma+ghost, distinct
-  const PLGAP=14;         // bigger gap above plague to visually separate
-  const B4W=110, B4H=24, B4GAP=10; // col4
+  // Uniform dimensions for all blocks
+  const NW=100, NH=26, GAP=8;
+  const EW=100, EH=26, EGAP=6;
 
   // Column x positions
-  const C1=8, C2=180, C3=325, C4=480;
+  const C1=10, C2=160, C3=310, C4=460;
+  // Side branch x offset
+  const SIDE_X=115;
 
-  // Col 1 y positions
-  const y1=14;
-  const y2=y1+NH+8;   // Alpha Skeletal — closer gap, smaller node
-  const y3=y2+SH+10;  // Apex
-  const y4=y3+NH+8;   // Apex Skeletal
-  const c1h=y4+SH;
+  // Col 1: Alpha, Apex (main flow) with skeletals branching to side
+  const alphaY=50, apexY=alphaY+NH+GAP*3;
+  const alphaSkeletalY=10, apexSkeletalY=apexY+NH+GAP*2;
 
-  // Col 2: 6 elementals centered on col1 height
+  // Col 2: 6 elementals
   const col2total=6*EH+5*EGAP;
-  const ey0=Math.round((c1h-col2total)/2)+14;
+  const ey0=Math.round((apexY+NH-col2total)/2)+10;
   const eY=Array.from({length:6},(_,i)=>ey0+i*(EH+EGAP));
+  const c2_mid=ey0+col2total/2;
 
-  // Col 3: Plasma|Ghost side by side, then gap, then Plague
-  // Total col3 width = PGW + PGGAP + PGW = 188 (but plague spans both)
-  const pgRow_y = ey0; // align to top of elementals
-  const pgH = PGH;
-  const plagueY = pgRow_y + pgH + PLGAP;
-  const col3bottom = plagueY + PLH;
+  // Col 3: Plague (main), Plasma|Ghost branching off above
+  const plagueY=Math.round(c2_mid-NH/2);
+  const pgY=10; // Plasma|Ghost at top as side branch
 
-  // Arrow from plague to bionic: plague right edge mid -> C4 left
-  const plagueArrowY = plagueY + PLH/2;
+  // Col 4: Bionic, Demonic/Celestial, Godly
+  const col4total=3*NH+2*GAP;
+  const by0=Math.round(c2_mid-col4total/2);
+  const bY=[by0, by0+NH+GAP, by0+2*(NH+GAP)];
 
-  // Col 4: centered on col1 height
-  const col4total = 3*B4H + 2*B4GAP;
-  const by0 = Math.round((c1h - col4total)/2)+14;
-  const bY = [by0, by0+B4H+B4GAP, by0+2*(B4H+B4GAP)];
+  // Total SVG dimensions
+  const totalH=Math.max(apexSkeletalY+NH, eY[5]+EH, bY[2]+NH)+30;
 
-  // Total SVG height
-  const totalH = Math.max(c1h, col3bottom, bY[2]+B4H) + 30;
-
-  // Mid-Y helpers for inter-column arrows
-  const c1_mid = Math.round(c1h/2)+14;
-  const c2_mid = Math.round(ey0 + col2total/2);
-  const pgRow_mid = Math.round(pgRow_y + pgH/2);
-
-  let s=`<svg width="100%" viewBox="0 0 610 ${totalH}" xmlns="http://www.w3.org/2000/svg" style="min-width:500px;display:block;">`;
-  s+=`<defs><marker id="ta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#3a3a50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>`;
+  let s=`<svg width="100%" viewBox="0 0 580 ${totalH}" xmlns="http://www.w3.org/2000/svg" style="min-width:500px;display:block;">`;
+  // Arrow markers
+  s+=`<defs>`;
+  s+=`<marker id="ta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#3a3a50" stroke-width="1.5" stroke-linecap="round"/></marker>`;
+  s+=`<marker id="ta-dim" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#2a2a38" stroke-width="1.5" stroke-linecap="round"/></marker>`;
+  s+=`</defs>`;
 
   const L=(x1,y1,x2,y2,arr)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#3a3a50" stroke-width="1"${arr?' marker-end="url(#ta)"':''}/>`;
+  const Ldash=(x1,y1,x2,y2,arr)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#2a2a38" stroke-width="1" stroke-dasharray="4 3"${arr?' marker-end="url(#ta-dim)"':''}/>`;
   const node=(x,y,w,h,txt,href,stroke,fill,font,size,sw)=>
     `<a href="${href}"><g style="cursor:pointer"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" fill="#1a1a28" stroke="${stroke}" stroke-width="${sw||1}"/><text x="${x+w/2}" y="${y+h/2}" text-anchor="middle" dominant-baseline="central" font-family="${font||'Rajdhani,sans-serif'}" font-size="${size||10}" font-weight="700" fill="${fill}">${txt}</text></g></a>`;
 
-  // COL 1
-  s+=node(C1,y1,NW,NH,'Alpha','#alpha','#e8580a','#e8580a','Orbitron,monospace',10,1.5);
-  s+=L(C1+NW/2,y1+NH,C1+NW/2,y2,true);
-  // Alpha Skeletal — smaller, muted
-  s+=node(C1+11,y2,SW,SH,'Alpha Skeletal','#alpha','#7878a0','#7878a0','Rajdhani,sans-serif',9,1);
-  s+=L(C1+NW/2,y2+SH,C1+NW/2,y3,true);
-  s+=node(C1,y3,NW,NH,'Apex','#apex','#e8580a','#e8580a','Orbitron,monospace',10,1.5);
-  s+=L(C1+NW/2,y3+NH,C1+NW/2,y4,true);
-  // Apex Skeletal — smaller, muted
-  s+=node(C1+11,y4,SW,SH,'Apex Skeletal','#apex','#7878a0','#7878a0','Rajdhani,sans-serif',9,1);
+  // === COL 1: Alpha -> Apex (main), Skeletals branch off ===
+  s+=node(C1,alphaY,NW,NH,'Alpha','#alpha','#e8580a','#e8580a','Orbitron,monospace',10,1.5);
+  s+=L(C1+NW/2,alphaY+NH,C1+NW/2,apexY,true);
+  s+=node(C1,apexY,NW,NH,'Apex','#apex','#e8580a','#e8580a','Orbitron,monospace',10,1.5);
 
-  // col1 -> col2
+  // Alpha Skeletal - side branch (dashed)
+  s+=Ldash(C1+NW,alphaY+NH/2,SIDE_X,alphaY+NH/2,false);
+  s+=Ldash(SIDE_X,alphaY+NH/2,SIDE_X,alphaSkeletalY+NH,true);
+  s+=node(SIDE_X-NW/2,alphaSkeletalY,NW,NH,'Alpha Skeletal','#alpha','#5a5a68','#7878a0','Rajdhani,sans-serif',9,1);
+
+  // Apex Skeletal - side branch (dashed)
+  s+=Ldash(C1+NW,apexY+NH/2,SIDE_X,apexY+NH/2,false);
+  s+=Ldash(SIDE_X,apexY+NH/2,SIDE_X,apexSkeletalY,true);
+  s+=node(SIDE_X-NW/2,apexSkeletalY,NW,NH,'Apex Skeletal','#apex','#5a5a68','#7878a0','Rajdhani,sans-serif',9,1);
+
+  // Col1 -> Col2 arrow
+  const c1_mid=(alphaY+apexY+NH)/2;
   s+=L(C1+NW,c1_mid,C2,c2_mid,true);
 
-  // COL 2 — elementals
+  // === COL 2: Elementals ===
   const elems=[
     ['Storm','#534AB7','#AFA9EC'],
     ['Volcanic','#993C1D','#F0997B'],
@@ -150,28 +143,28 @@ function renderTierDiagram(){
   ];
   elems.forEach(([lbl,st,fi],i)=>{s+=node(C2,eY[i],EW,EH,lbl,'#elemental',st,fi,'Rajdhani,sans-serif',10,1);});
 
-  // col2 -> col3 (arrow points to midpoint of plasma|ghost row)
-  s+=L(C2+EW,c2_mid,C3,pgRow_mid,true);
+  // Col2 -> Col3 Plague (main flow)
+  s+=L(C2+EW,c2_mid,C3,plagueY+NH/2,true);
 
-  // COL 3 — Plasma | Ghost side by side
-  s+=node(C3,pgRow_y,PGW,PGH,'Plasma','#plasma-ghost-plague','#534AB7','#AFA9EC','Rajdhani,sans-serif',10,1);
-  s+=node(C3+PGW+PGGAP,pgRow_y,PGW,PGH,'Ghost','#plasma-ghost-plague','#5F5E5A','#B4B2A9','Rajdhani,sans-serif',10,1);
+  // === COL 3: Plague (main), Plasma|Ghost side branch ===
+  s+=node(C3,plagueY,NW,NH,'Plague','#plasma-ghost-plague','#A32D2D','#F09595','Rajdhani,sans-serif',10,1.5);
 
-  // Arrow down from center of Plasma|Ghost row to Plague
-  s+=L(C3+PGW+PGGAP/2,pgRow_y+PGH,C3+PGW+PGGAP/2,plagueY,true);
+  // Plasma|Ghost - side branch from elementals (dashed)
+  s+=Ldash(C2+EW,eY[0]+EH/2,C3-10,eY[0]+EH/2,false);
+  s+=Ldash(C3-10,eY[0]+EH/2,C3-10,pgY+NH/2,false);
+  s+=Ldash(C3-10,pgY+NH/2,C3,pgY+NH/2,true);
+  s+=node(C3,pgY,NW,NH,'Plasma','#plasma-ghost-plague','#534AB7','#AFA9EC','Rajdhani,sans-serif',10,1);
+  s+=node(C3+NW+6,pgY,NW,NH,'Ghost','#plasma-ghost-plague','#5F5E5A','#B4B2A9','Rajdhani,sans-serif',10,1);
 
-  // Plague — full width, distinct red/orange color, slightly taller
-  s+=node(C3,plagueY,PLW,PLH,'Plague','#plasma-ghost-plague','#e8580a','#F09595','Rajdhani,sans-serif',10,1.5);
+  // Col3 -> Col4 (Plague -> Bionic)
+  s+=L(C3+NW,plagueY+NH/2,C4,bY[0]+NH/2,true);
 
-  // Arrow from Plague right edge -> Col4 Bionic
-  s+=L(C3+PLW,plagueArrowY,C4,bY[0]+B4H/2,true);
-
-  // COL 4
-  s+=node(C4,bY[0],B4W,B4H,'Bionic','#bionic','#e8580a','#e8580a','Orbitron,monospace',10,1.5);
-  s+=L(C4+B4W/2,bY[0]+B4H,C4+B4W/2,bY[1],true);
-  s+=node(C4,bY[1],B4W,B4H,'Celestial/Demonic','#celestial-demonic','#534AB7','#AFA9EC','Rajdhani,sans-serif',9,1);
-  s+=L(C4+B4W/2,bY[1]+B4H,C4+B4W/2,bY[2],true);
-  s+=node(C4,bY[2],B4W,B4H,'Godly','#godly','#e8580a','#e8580a','Orbitron,monospace',10,1.5);
+  // === COL 4: Bionic -> Demonic/Celestial -> Godly ===
+  s+=node(C4,bY[0],NW,NH,'Bionic','#bionic','#e8580a','#e8580a','Orbitron,monospace',10,1.5);
+  s+=L(C4+NW/2,bY[0]+NH,C4+NW/2,bY[1],true);
+  s+=node(C4,bY[1],NW,NH,'Celestial/Demonic','#celestial-demonic','#534AB7','#AFA9EC','Rajdhani,sans-serif',8,1);
+  s+=L(C4+NW/2,bY[1]+NH,C4+NW/2,bY[2],true);
+  s+=node(C4,bY[2],NW,NH,'Godly','#godly','#e8580a','#e8580a','Orbitron,monospace',10,1.5);
 
   // Water note
   const wY=totalH-14;

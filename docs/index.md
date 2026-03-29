@@ -4,4 +4,4 @@ Welcome to the RokiArkNet guide hub — your resource for ARK: Survival Ascended
 
 ## Guides
 
-- https://rokiarknet.github.io/RokiArkNet/primal-nemesis.html
+- [Primal Nemesis](../primal-nemesis.html)
