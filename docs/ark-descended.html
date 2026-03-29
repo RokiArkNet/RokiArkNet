@@ -62,7 +62,6 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 <body>
 <aside id="sidebar">
   <div id="sidebar-header">
-    <a href="./" class="logo" style="text-decoration:none;">RokiArkNet</a>
     <h2>Ark Descended Guide</h2>
   </div>
   <nav id="nav"></nav>
@@ -359,7 +358,7 @@ async function loadGuide(){
 
     // Hero
     const hero=document.createElement('div');hero.id='hero';
-    hero.innerHTML=`<div class="eyebrow">RokiArkNet Guide</div><h1>ARK DESCENDED</h1>`;
+    hero.innerHTML=`<h1>ARK DESCENDED</h1>`;
     if(sections['baseline']){
       const box=document.createElement('div');box.className='baseline-box';
       box.innerHTML=marked.parse(sections['baseline'].trim());

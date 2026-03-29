@@ -55,7 +55,6 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 <body>
 <aside id="sidebar">
   <div id="sidebar-header">
-    <a href="./" class="logo" style="text-decoration:none;">RokiArkNet</a>
     <h2>Primal Chaos Guide</h2>
   </div>
   <nav id="nav"></nav>
@@ -284,7 +283,7 @@ async function loadGuide(){
     const sections=parseMarkdown(md);
     const contentEl=document.getElementById('content');
     const hero=document.createElement('div');hero.id='hero';
-    hero.innerHTML='<div class="eyebrow">RokiArkNet Guide</div><h1>PRIMAL CHAOS</h1>';
+    hero.innerHTML='<h1>PRIMAL CHAOS</h1>';
     const baseline=sections.find(s=>s.id==='baseline');
     if(baseline){const box=document.createElement('div');box.className='baseline-box';box.innerHTML=marked.parse(baseline.lines.join('\n'));hero.appendChild(box);}
     contentEl.appendChild(hero);
