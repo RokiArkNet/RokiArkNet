@@ -50,7 +50,7 @@ Your first real power spike comes from Toxic-tier creatures. These tames are the
 
 Once you have Toxic creatures breeding, prepare for Alpha-tier taming.
 
-**Alpha Kibble Recipe** — Requires unfertilized Toxic Eggs. Combine with vanilla ingredients in the Primal Cauldron.
+**Alpha Kibble Recipe** — Requires unfertilized Toxic Eggs. Combine with vanilla ingredients in the Primal Smithy.
 
 **Best Early Breeders** — Toxic Dodos, Toxic Dilos, Toxic Parasaurs
 
