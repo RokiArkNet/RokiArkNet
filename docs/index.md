@@ -6,4 +6,5 @@ Welcome to the RokiArkNet guide hub — your resource for ARK: Survival Ascended
 
 - [Primal Nemesis](primal-nemesis.html)
 - [Primal Chaos](primal-chaos.html)
+- [Ark Descended](ark-descended.html)
 - [Ark Supreme](ark-supreme.html)
