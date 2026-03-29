@@ -18,11 +18,7 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
 .guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
 .guide-card{background:var(--card);border:1px solid var(--border);padding:20px 24px;text-decoration:none;display:block;transition:all .2s;position:relative;}
 .guide-card:hover{border-color:var(--orange);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3);}
-.guide-card-title{font-family:'Orbitron',monospace;font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;letter-spacing:1px;}
-.guide-card-desc{font-size:14px;color:var(--muted);line-height:1.5;}
-.guide-card-status{position:absolute;top:12px;right:12px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:2px;}
-.status-complete{background:rgba(34,197,94,.15);color:#22c55e;border:1px solid rgba(34,197,94,.3);}
-.status-coming{background:rgba(120,120,160,.15);color:var(--muted);border:1px solid rgba(120,120,160,.3);}
+.guide-card-title{font-family:'Orbitron',monospace;font-size:16px;font-weight:700;color:#fff;letter-spacing:1px;}
 .footer{text-align:center;padding-top:40px;border-top:1px solid var(--border);color:var(--muted);font-size:13px;}
 .footer a{color:var(--orange);text-decoration:none;}
 .footer a:hover{text-decoration:underline;}
@@ -40,19 +36,13 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
     <div class="section-title">Primal Mods</div>
     <div class="guide-grid">
       <a href="primal-nemesis.html" class="guide-card">
-        <span class="guide-card-status status-complete">Complete</span>
         <div class="guide-card-title">Primal Nemesis</div>
-        <div class="guide-card-desc">9-tier progression from Alpha to Godly. Elemental matchups, egg-based kibble system, and creature reference.</div>
       </a>
       <a href="primal-chaos.html" class="guide-card">
-        <span class="guide-card-status status-complete">Complete</span>
         <div class="guide-card-title">Primal Chaos</div>
-        <div class="guide-card-desc">9-tier progression from Toxic to Nightmare. Loot bosses, special encounters, and Deathknight endgame.</div>
       </a>
       <a href="ark-supreme.html" class="guide-card">
-        <span class="guide-card-status status-coming">Coming Soon</span>
         <div class="guide-card-title">Ark Supreme</div>
-        <div class="guide-card-desc">Guide currently under development. Check back later for full documentation.</div>
       </a>
     </div>
   </div>
@@ -61,9 +51,7 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
     <div class="section-title">Ark Descended</div>
     <div class="guide-grid">
       <a href="ark-descended.html" class="guide-card">
-        <span class="guide-card-status status-complete">Complete</span>
         <div class="guide-card-title">Ark Descended</div>
-        <div class="guide-card-desc">10-tier progression from Ordinary to Dream. Six evolution paths, Warchief trials, and God Trials endgame.</div>
       </a>
     </div>
   </div>
