@@ -54,261 +54,200 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;fo
   <div id="content" style="display:none"></div>
 </main>
 <script>
-const CONTENT_URL = 'https://raw.githubusercontent.com/rokiarknet/RokiArkNet/main/content/primal-nemesis.md';
+const CONTENT_URL='https://raw.githubusercontent.com/rokiarknet/RokiArkNet/main/content/primal-nemesis.md';
+const NAV_SECTIONS={'Overview':['tier-list','getting-started'],'Progression':['alpha','apex','elemental','plasma-ghost-plague','bionic','celestial-demonic','godly'],'Reference':['loot-bosses','loot-system','resource-ores','charms','titans','faq']};
+const SECTION_LABELS={'tier-list':'Tier List','getting-started':'Getting Started','alpha':'Alpha','apex':'Apex','elemental':'Elemental','plasma-ghost-plague':'Plasma / Ghost / Plague','bionic':'Bionic','celestial-demonic':'Celestial / Demonic','godly':'Godly','loot-bosses':'Boss Reference','loot-system':'Loot System','resource-ores':'Resource Ores','charms':'Charms & Totems','titans':'Titans','faq':'FAQ & Tips'};
 
-const NAV_SECTIONS = {
-  'Overview': ['tier-list','getting-started'],
-  'Progression': ['alpha','apex','elemental','plasma-ghost-plague','bionic','celestial-demonic','godly'],
-  'Reference': ['loot-bosses','loot-system','resource-ores','charms','titans','faq']
-};
-
-const SECTION_LABELS = {
-  'tier-list':'Tier List','getting-started':'Getting Started',
-  'alpha':'Alpha','apex':'Apex','elemental':'Elemental',
-  'plasma-ghost-plague':'Plasma / Ghost / Plague','bionic':'Bionic',
-  'celestial-demonic':'Celestial / Demonic','godly':'Godly',
-  'loot-bosses':'Boss Reference','loot-system':'Loot System',
-  'resource-ores':'Resource Ores','charms':'Charms & Totems',
-  'titans':'Titans','faq':'FAQ & Tips'
-};
-
-function buildNav() {
-  const nav = document.getElementById('nav');
-  for (const [group, ids] of Object.entries(NAV_SECTIONS)) {
-    const div = document.createElement('div');
-    div.className = 'nav-section';
-    div.textContent = group;
-    nav.appendChild(div);
-    ids.forEach(id => {
-      const a = document.createElement('a');
-      a.href = '#' + id;
-      a.textContent = SECTION_LABELS[id] || id;
-      nav.appendChild(a);
-    });
+function buildNav(){
+  const nav=document.getElementById('nav');
+  for(const[group,ids]of Object.entries(NAV_SECTIONS)){
+    const div=document.createElement('div');div.className='nav-section';div.textContent=group;nav.appendChild(div);
+    ids.forEach(id=>{const a=document.createElement('a');a.href='#'+id;a.textContent=SECTION_LABELS[id]||id;nav.appendChild(a);});
   }
 }
 
-function parseMarkdown(md) {
-  // Split into sections by ## headers
-  const sections = [];
-  const lines = md.split('\n');
-  let current = null;
-  for (const line of lines) {
-    if (line.startsWith('## ')) {
-      if (current) sections.push(current);
-      current = { id: line.slice(3).trim(), lines: [] };
-    } else if (current) {
-      current.lines.push(line);
-    }
+function renderTierDiagram(){
+  const wrap=document.createElement('div');
+  wrap.style.cssText='background:#14141e;border:1px solid #2a2a3e;padding:20px 16px 16px;margin:8px 0;overflow-x:auto;';
+
+  // Uniform dimensions for all blocks
+  const NW=100, NH=26, GAP=8;
+  const EW=100, EH=26, EGAP=6;
+
+  // Column x positions
+  const C1=10, C2=160, C3=310, C4=460;
+  // Side branch x offset
+  const SIDE_X=115;
+
+  // Col 1: Alpha, Apex (main flow) with skeletals branching to side
+  const alphaY=50, apexY=alphaY+NH+GAP*3;
+  const alphaSkeletalY=10, apexSkeletalY=apexY+NH+GAP*2;
+
+  // Col 2: 6 elementals
+  const col2total=6*EH+5*EGAP;
+  const ey0=Math.round((apexY+NH-col2total)/2)+10;
+  const eY=Array.from({length:6},(_,i)=>ey0+i*(EH+EGAP));
+  const c2_mid=ey0+col2total/2;
+
+  // Col 3: Plague (main), Plasma|Ghost branching off above
+  const plagueY=Math.round(c2_mid-NH/2);
+  const pgY=10; // Plasma|Ghost at top as side branch
+
+  // Col 4: Bionic, Demonic/Celestial, Godly
+  const col4total=3*NH+2*GAP;
+  const by0=Math.round(c2_mid-col4total/2);
+  const bY=[by0, by0+NH+GAP, by0+2*(NH+GAP)];
+
+  // Total SVG dimensions
+  const totalH=Math.max(apexSkeletalY+NH, eY[5]+EH, bY[2]+NH)+30;
+
+  let s=`<svg width="100%" viewBox="0 0 580 ${totalH}" xmlns="http://www.w3.org/2000/svg" style="min-width:500px;display:block;">`;
+  // Arrow markers
+  s+=`<defs>`;
+  s+=`<marker id="ta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#3a3a50" stroke-width="1.5" stroke-linecap="round"/></marker>`;
+  s+=`<marker id="ta-dim" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#2a2a38" stroke-width="1.5" stroke-linecap="round"/></marker>`;
+  s+=`</defs>`;
+
+  const L=(x1,y1,x2,y2,arr)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#3a3a50" stroke-width="1"${arr?' marker-end="url(#ta)"':''}/>`;
+  const Ldash=(x1,y1,x2,y2,arr)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#2a2a38" stroke-width="1" stroke-dasharray="4 3"${arr?' marker-end="url(#ta-dim)"':''}/>`;
+  const node=(x,y,w,h,txt,href,stroke,fill,font,size,sw)=>
+    `<a href="${href}"><g style="cursor:pointer"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" fill="#1a1a28" stroke="${stroke}" stroke-width="${sw||1}"/><text x="${x+w/2}" y="${y+h/2}" text-anchor="middle" dominant-baseline="central" font-family="${font||'Rajdhani,sans-serif'}" font-size="${size||10}" font-weight="700" fill="${fill}">${txt}</text></g></a>`;
+
+  // === COL 1: Alpha -> Apex (main), Skeletals branch off ===
+  s+=node(C1,alphaY,NW,NH,'Alpha','#alpha','#e8580a','#e8580a','Orbitron,monospace',10,1.5);
+  s+=L(C1+NW/2,alphaY+NH,C1+NW/2,apexY,true);
+  s+=node(C1,apexY,NW,NH,'Apex','#apex','#e8580a','#e8580a','Orbitron,monospace',10,1.5);
+
+  // Alpha Skeletal - side branch (dashed)
+  s+=Ldash(C1+NW,alphaY+NH/2,SIDE_X,alphaY+NH/2,false);
+  s+=Ldash(SIDE_X,alphaY+NH/2,SIDE_X,alphaSkeletalY+NH,true);
+  s+=node(SIDE_X-NW/2,alphaSkeletalY,NW,NH,'Alpha Skeletal','#alpha','#5a5a68','#7878a0','Rajdhani,sans-serif',9,1);
+
+  // Apex Skeletal - side branch (dashed)
+  s+=Ldash(C1+NW,apexY+NH/2,SIDE_X,apexY+NH/2,false);
+  s+=Ldash(SIDE_X,apexY+NH/2,SIDE_X,apexSkeletalY,true);
+  s+=node(SIDE_X-NW/2,apexSkeletalY,NW,NH,'Apex Skeletal','#apex','#5a5a68','#7878a0','Rajdhani,sans-serif',9,1);
+
+  // Col1 -> Col2 arrow
+  const c1_mid=(alphaY+apexY+NH)/2;
+  s+=L(C1+NW,c1_mid,C2,c2_mid,true);
+
+  // === COL 2: Elementals ===
+  const elems=[
+    ['Storm','#534AB7','#AFA9EC'],
+    ['Volcanic','#993C1D','#F0997B'],
+    ['Hydro','#185FA5','#85B7EB'],
+    ['Frost','#185FA5','#85B7EB'],
+    ['Nature','#3B6D11','#97C459'],
+    ['Earth','#854F0B','#EF9F27'],
+  ];
+  elems.forEach(([lbl,st,fi],i)=>{s+=node(C2,eY[i],EW,EH,lbl,'#elemental',st,fi,'Rajdhani,sans-serif',10,1);});
+
+  // Col2 -> Col3 Plague (main flow)
+  s+=L(C2+EW,c2_mid,C3,plagueY+NH/2,true);
+
+  // === COL 3: Plague (main), Plasma|Ghost side branch ===
+  s+=node(C3,plagueY,NW,NH,'Plague','#plasma-ghost-plague','#A32D2D','#F09595','Rajdhani,sans-serif',10,1.5);
+
+  // Plasma|Ghost - side branch from elementals (dashed)
+  s+=Ldash(C2+EW,eY[0]+EH/2,C3-10,eY[0]+EH/2,false);
+  s+=Ldash(C3-10,eY[0]+EH/2,C3-10,pgY+NH/2,false);
+  s+=Ldash(C3-10,pgY+NH/2,C3,pgY+NH/2,true);
+  s+=node(C3,pgY,NW,NH,'Plasma','#plasma-ghost-plague','#534AB7','#AFA9EC','Rajdhani,sans-serif',10,1);
+  s+=node(C3+NW+6,pgY,NW,NH,'Ghost','#plasma-ghost-plague','#5F5E5A','#B4B2A9','Rajdhani,sans-serif',10,1);
+
+  // Col3 -> Col4 (Plague -> Bionic)
+  s+=L(C3+NW,plagueY+NH/2,C4,bY[0]+NH/2,true);
+
+  // === COL 4: Bionic -> Demonic/Celestial -> Godly ===
+  s+=node(C4,bY[0],NW,NH,'Bionic','#bionic','#e8580a','#e8580a','Orbitron,monospace',10,1.5);
+  s+=L(C4+NW/2,bY[0]+NH,C4+NW/2,bY[1],true);
+  s+=node(C4,bY[1],NW,NH,'Celestial/Demonic','#celestial-demonic','#534AB7','#AFA9EC','Rajdhani,sans-serif',8,1);
+  s+=L(C4+NW/2,bY[1]+NH,C4+NW/2,bY[2],true);
+  s+=node(C4,bY[2],NW,NH,'Godly','#godly','#e8580a','#e8580a','Orbitron,monospace',10,1.5);
+
+  // Water note
+  const wY=totalH-14;
+  s+=`<rect x="${C1}" y="${wY}" width="160" height="12" rx="2" fill="#14141e" stroke="#2a2a3e" stroke-width="1" stroke-dasharray="3 2"/>`;
+  s+=`<text x="${C1+80}" y="${wY+6}" text-anchor="middle" dominant-baseline="central" font-family="Rajdhani,sans-serif" font-size="7.5" fill="#5F5E5A">Pacific~Alpha  Atlantic~Apex (non-progression)</text>`;
+
+  s+='</svg>';
+  wrap.innerHTML=s;
+  return wrap;
+}
+
+function parseMarkdown(md){
+  const sections=[];const lines=md.split('\n');let current=null;
+  for(const line of lines){
+    if(line.startsWith('## ')){if(current)sections.push(current);current={id:line.slice(3).trim(),lines:[]};}
+    else if(current){current.lines.push(line);}
   }
-  if (current) sections.push(current);
+  if(current)sections.push(current);
   return sections;
 }
 
-function renderSection(section) {
-  const div = document.createElement('div');
-  div.className = 'section';
-  div.id = section.id;
-
-  const titleDiv = document.createElement('div');
-  titleDiv.className = 'section-title';
-  titleDiv.textContent = SECTION_LABELS[section.id] || section.id;
-  div.appendChild(titleDiv);
-
-  const raw = section.lines.join('\n');
-  const inner = document.createElement('div');
-
-  // Process line by line for special elements
-  const blocks = [];
-  let buffer = [];
-
-  const flushBuffer = () => {
-    if (buffer.length) {
-      blocks.push({ type: 'md', content: buffer.join('\n') });
-      buffer = [];
-    }
-  };
-
-  for (const line of section.lines) {
-    if (line.startsWith('> ⚠️ WARNING:') || line.startsWith('> ⚠️ WARNING')) {
-      flushBuffer();
-      blocks.push({ type: 'warn', content: line.replace(/^> ⚠️ WARNING:?\s*/, '') });
-    } else if (line.startsWith('> STRUCTURE DAMAGE:')) {
-      flushBuffer();
-      blocks.push({ type: 'struct', content: line.replace(/^> STRUCTURE DAMAGE:\s*/, '') });
-    } else if (line.startsWith('> ')) {
-      flushBuffer();
-      blocks.push({ type: 'tip', content: line.slice(2) });
-    } else {
-      buffer.push(line);
-    }
+function renderSection(section){
+  const div=document.createElement('div');div.className='section';div.id=section.id;
+  const titleDiv=document.createElement('div');titleDiv.className='section-title';titleDiv.textContent=SECTION_LABELS[section.id]||section.id;div.appendChild(titleDiv);
+  const inner=document.createElement('div');
+  const blocks=[];let buffer=[];
+  const flush=()=>{if(buffer.length){blocks.push({type:'md',content:buffer.join('\n')});buffer=[];}};
+  for(const line of section.lines){
+    if(line.includes('WARNING:')){flush();blocks.push({type:'warn',content:line.replace(/^> ⚠️ WARNING:?\s*/,'').replace(/^> WARNING:?\s*/,'')});}
+    else if(line.startsWith('> STRUCTURE DAMAGE:')){flush();blocks.push({type:'struct',content:line.replace(/^> STRUCTURE DAMAGE:\s*/,'')});}
+    else if(line.startsWith('> ')){flush();blocks.push({type:'tip',content:line.slice(2)});}
+    else{buffer.push(line);}
   }
-  flushBuffer();
-
-  blocks.forEach(block => {
-    if (block.type === 'warn') {
-      const el = document.createElement('div');
-      el.className = 'warn';
-      el.textContent = block.content;
-      inner.appendChild(el);
-    } else if (block.type === 'tip') {
-      const el = document.createElement('div');
-      el.className = 'tip';
-      el.textContent = block.content;
-      inner.appendChild(el);
-    } else if (block.type === 'struct') {
-      const el = document.createElement('div');
-      el.className = 'struct-badge';
-      el.textContent = 'Structure Damage — ' + block.content;
-      inner.appendChild(el);
-    } else {
-      const el = document.createElement('div');
-      el.innerHTML = marked.parse(block.content);
-      // Restyle headings
-      el.querySelectorAll('h3').forEach(h => h.style.cssText = 'font-size:16px;font-weight:700;color:#f0a020;margin:24px 0 10px;text-transform:uppercase;letter-spacing:1px;');
-      el.querySelectorAll('h4').forEach(h => h.style.cssText = 'font-size:14px;font-weight:700;color:#d8d8e8;margin:16px 0 6px;');
-      el.querySelectorAll('p').forEach(p => p.style.cssText = 'margin-bottom:12px;color:#d8d8e8;');
-      el.querySelectorAll('ul,ol').forEach(l => l.style.cssText = 'padding-left:20px;margin-bottom:12px;');
-      el.querySelectorAll('li').forEach(l => l.style.cssText = 'margin-bottom:4px;color:#d8d8e8;');
-      el.querySelectorAll('strong').forEach(s => s.style.color = '#f0a020');
-      inner.appendChild(el);
-    }
+  flush();
+  blocks.forEach(block=>{
+    if(block.type==='warn'){const el=document.createElement('div');el.className='warn';el.textContent=block.content;inner.appendChild(el);}
+    else if(block.type==='tip'){const el=document.createElement('div');el.className='tip';el.textContent=block.content;inner.appendChild(el);}
+    else if(block.type==='struct'){const el=document.createElement('div');el.className='struct-badge';el.textContent='Structure Damage — '+block.content;inner.appendChild(el);}
+    else{const el=document.createElement('div');el.innerHTML=marked.parse(block.content);
+      el.querySelectorAll('h3').forEach(h=>h.style.cssText='font-size:16px;font-weight:700;color:#f0a020;margin:24px 0 10px;text-transform:uppercase;letter-spacing:1px;');
+      el.querySelectorAll('h4').forEach(h=>h.style.cssText='font-size:14px;font-weight:700;color:#d8d8e8;margin:16px 0 6px;');
+      el.querySelectorAll('p').forEach(p=>p.style.cssText='margin-bottom:12px;color:#d8d8e8;');
+      el.querySelectorAll('ul,ol').forEach(l=>l.style.cssText='padding-left:20px;margin-bottom:12px;');
+      el.querySelectorAll('li').forEach(l=>l.style.cssText='margin-bottom:4px;color:#d8d8e8;');
+      el.querySelectorAll('strong').forEach(s=>s.style.color='#f0a020');
+      inner.appendChild(el);}
   });
-
-  div.appendChild(inner);
-  return div;
+  div.appendChild(inner);return div;
 }
 
-
-
-async function loadGuide() {
-  try {
-    const resp = await fetch(CONTENT_URL + '?t=' + Date.now());
-    const md = await resp.text();
-    const sections = parseMarkdown(md);
-
-    const contentEl = document.getElementById('content');
-
-    // Hero
-    const hero = document.createElement('div');
-    hero.id = 'hero';
-    hero.innerHTML = '<div class="eyebrow">RokiArkNet Guide</div><h1>PRIMAL NEMESIS</h1>';
-
-    // Find baseline section
-    const baseline = sections.find(s => s.id === 'baseline');
-    if (baseline) {
-      const box = document.createElement('div');
-      box.className = 'baseline-box';
-      box.innerHTML = marked.parse(baseline.lines.join('\n'));
-      hero.appendChild(box);
-    }
+async function loadGuide(){
+  try{
+    const resp=await fetch(CONTENT_URL+'?t='+Date.now());
+    const md=await resp.text();
+    const sections=parseMarkdown(md);
+    const contentEl=document.getElementById('content');
+    const hero=document.createElement('div');hero.id='hero';
+    hero.innerHTML='<div class="eyebrow">RokiArkNet Guide</div><h1>PRIMAL NEMESIS</h1>';
+    const baseline=sections.find(s=>s.id==='baseline');
+    if(baseline){const box=document.createElement('div');box.className='baseline-box';box.innerHTML=marked.parse(baseline.lines.join('\n'));hero.appendChild(box);}
     contentEl.appendChild(hero);
-
-    // Render all sections except baseline
-    function renderTierDiagram(){
-  const d=document.createElement('div');
-  d.style.cssText='background:#14141e;border:1px solid #2a2a3e;padding:16px 12px;margin:8px 0;overflow-x:auto;';
-  d.innerHTML=`<svg width="100%" viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" style="min-width:580px;display:block;">
-<defs><marker id="ta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#3a3a50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-
-<!-- Row 1: Alpha -> Apex -->
-<line x1="68" y1="22" x2="118" y2="22" stroke="#3a3a50" stroke-width="1" marker-end="url(#ta)"/>
-<!-- Apex -> Elemental fan -->
-<line x1="168" y1="22" x2="188" y2="22" stroke="#3a3a50" stroke-width="1"/>
-<line x1="188" y1="22" x2="188" y2="70" stroke="#3a3a50" stroke-width="1"/>
-<line x1="188" y1="46" x2="213" y2="46" stroke="#3a3a50" stroke-width="1" marker-end="url(#ta)"/>
-<line x1="188" y1="70" x2="213" y2="70" stroke="#3a3a50" stroke-width="1" marker-end="url(#ta)"/>
-<line x1="188" y1="94" x2="213" y2="94" stroke="#3a3a50" stroke-width="1" marker-end="url(#ta)"/>
-<line x1="188" y1="118" x2="213" y2="118" stroke="#3a3a50" stroke-width="1" marker-end="url(#ta)"/>
-<line x1="188" y1="142" x2="213" y2="142" stroke="#3a3a50" stroke-width="1" marker-end="url(#ta)"/>
-<line x1="188" y1="166" x2="213" y2="166" stroke="#3a3a50" stroke-width="1" marker-end="url(#ta)"/>
-<!-- Elementals converge -->
-<line x1="283" y1="46" x2="303" y2="46" stroke="#3a3a50" stroke-width="1"/>
-<line x1="283" y1="70" x2="303" y2="70" stroke="#3a3a50" stroke-width="1"/>
-<line x1="283" y1="94" x2="303" y2="94" stroke="#3a3a50" stroke-width="1"/>
-<line x1="283" y1="118" x2="303" y2="118" stroke="#3a3a50" stroke-width="1"/>
-<line x1="283" y1="142" x2="303" y2="142" stroke="#3a3a50" stroke-width="1"/>
-<line x1="283" y1="166" x2="303" y2="166" stroke="#3a3a50" stroke-width="1"/>
-<line x1="303" y1="46" x2="303" y2="166" stroke="#3a3a50" stroke-width="1"/>
-<line x1="303" y1="106" x2="323" y2="106" stroke="#3a3a50" stroke-width="1" marker-end="url(#ta)"/>
-<!-- Plasma/Ghost -> Plague -> Bionic -> Cel/Dem -->
-<line x1="398" y1="106" x2="418" y2="106" stroke="#3a3a50" stroke-width="1" marker-end="url(#ta)"/>
-<line x1="468" y1="106" x2="488" y2="106" stroke="#3a3a50" stroke-width="1" marker-end="url(#ta)"/>
-<line x1="548" y1="106" x2="568" y2="106" stroke="#3a3a50" stroke-width="1" marker-end="url(#ta)"/>
-
-<!-- Alpha -->
-<a href="#alpha"><g style="cursor:pointer">
-<rect x="4" y="10" width="64" height="24" rx="3" fill="#1a1a28" stroke="#e8580a" stroke-width="1.5"/>
-<text x="36" y="22" text-anchor="middle" dominant-baseline="central" font-family="Orbitron,monospace" font-size="9" font-weight="700" fill="#e8580a">Alpha</text>
-</g></a>
-
-<!-- Apex -->
-<a href="#apex"><g style="cursor:pointer">
-<rect x="118" y="10" width="50" height="24" rx="3" fill="#1a1a28" stroke="#e8580a" stroke-width="1.5"/>
-<text x="143" y="22" text-anchor="middle" dominant-baseline="central" font-family="Orbitron,monospace" font-size="9" font-weight="700" fill="#e8580a">Apex</text>
-</g></a>
-
-<!-- Elementals -->
-<a href="#elemental"><g style="cursor:pointer"><rect x="213" y="34" width="70" height="24" rx="3" fill="#1a1a28" stroke="#534AB7" stroke-width="1"/><text x="248" y="46" text-anchor="middle" dominant-baseline="central" font-family="Rajdhani,sans-serif" font-size="9" font-weight="700" fill="#AFA9EC">Storm</text></g></a>
-<a href="#elemental"><g style="cursor:pointer"><rect x="213" y="58" width="70" height="24" rx="3" fill="#1a1a28" stroke="#993C1D" stroke-width="1"/><text x="248" y="70" text-anchor="middle" dominant-baseline="central" font-family="Rajdhani,sans-serif" font-size="9" font-weight="700" fill="#F0997B">Volcanic</text></g></a>
-<a href="#elemental"><g style="cursor:pointer"><rect x="213" y="82" width="70" height="24" rx="3" fill="#1a1a28" stroke="#185FA5" stroke-width="1"/><text x="248" y="94" text-anchor="middle" dominant-baseline="central" font-family="Rajdhani,sans-serif" font-size="9" font-weight="700" fill="#85B7EB">Hydro</text></g></a>
-<a href="#elemental"><g style="cursor:pointer"><rect x="213" y="106" width="70" height="24" rx="3" fill="#1a1a28" stroke="#185FA5" stroke-width="1"/><text x="248" y="118" text-anchor="middle" dominant-baseline="central" font-family="Rajdhani,sans-serif" font-size="9" font-weight="700" fill="#85B7EB">Frost</text></g></a>
-<a href="#elemental"><g style="cursor:pointer"><rect x="213" y="130" width="70" height="24" rx="3" fill="#1a1a28" stroke="#3B6D11" stroke-width="1"/><text x="248" y="142" text-anchor="middle" dominant-baseline="central" font-family="Rajdhani,sans-serif" font-size="9" font-weight="700" fill="#97C459">Nature</text></g></a>
-<a href="#elemental"><g style="cursor:pointer"><rect x="213" y="154" width="70" height="24" rx="3" fill="#1a1a28" stroke="#854F0B" stroke-width="1"/><text x="248" y="166" text-anchor="middle" dominant-baseline="central" font-family="Rajdhani,sans-serif" font-size="9" font-weight="700" fill="#EF9F27">Earth</text></g></a>
-
-<!-- Plasma/Ghost stacked -->
-<a href="#plasma-ghost-plague"><g style="cursor:pointer"><rect x="323" y="88" width="75" height="22" rx="3" fill="#1a1a28" stroke="#534AB7" stroke-width="1"/><text x="360" y="99" text-anchor="middle" dominant-baseline="central" font-family="Rajdhani,sans-serif" font-size="9" font-weight="700" fill="#AFA9EC">Plasma</text></g></a>
-<a href="#plasma-ghost-plague"><g style="cursor:pointer"><rect x="323" y="112" width="75" height="22" rx="3" fill="#1a1a28" stroke="#5F5E5A" stroke-width="1"/><text x="360" y="123" text-anchor="middle" dominant-baseline="central" font-family="Rajdhani,sans-serif" font-size="9" font-weight="700" fill="#B4B2A9">Ghost</text></g></a>
-
-<!-- Plague -->
-<a href="#plasma-ghost-plague"><g style="cursor:pointer"><rect x="418" y="94" width="50" height="24" rx="3" fill="#1a1a28" stroke="#A32D2D" stroke-width="1"/><text x="443" y="106" text-anchor="middle" dominant-baseline="central" font-family="Rajdhani,sans-serif" font-size="9" font-weight="700" fill="#F09595">Plague</text></g></a>
-
-<!-- Bionic -->
-<a href="#bionic"><g style="cursor:pointer"><rect x="488" y="94" width="60" height="24" rx="3" fill="#1a1a28" stroke="#e8580a" stroke-width="1.5"/><text x="518" y="106" text-anchor="middle" dominant-baseline="central" font-family="Orbitron,monospace" font-size="9" font-weight="700" fill="#e8580a">Bionic</text></g></a>
-
-<!-- Cel/Dem/Godly stacked -->
-<a href="#celestial-demonic"><g style="cursor:pointer"><rect x="568" y="82" width="106" height="20" rx="3" fill="#1a1a28" stroke="#0F6E56" stroke-width="1"/><text x="621" y="92" text-anchor="middle" dominant-baseline="central" font-family="Rajdhani,sans-serif" font-size="8" font-weight="700" fill="#5DCAA5">Celestial</text></g></a>
-<a href="#celestial-demonic"><g style="cursor:pointer"><rect x="568" y="104" width="106" height="20" rx="3" fill="#1a1a28" stroke="#534AB7" stroke-width="1"/><text x="621" y="114" text-anchor="middle" dominant-baseline="central" font-family="Rajdhani,sans-serif" font-size="8" font-weight="700" fill="#AFA9EC">Demonic</text></g></a>
-<a href="#godly"><g style="cursor:pointer"><rect x="568" y="126" width="106" height="20" rx="3" fill="#1a1a28" stroke="#e8580a" stroke-width="1.5"/><text x="621" y="136" text-anchor="middle" dominant-baseline="central" font-family="Orbitron,monospace" font-size="8" font-weight="700" fill="#e8580a">Godly</text></g></a>
-
-<!-- Water note -->
-<rect x="4" y="170" width="200" height="22" rx="3" fill="#14141e" stroke="#2a2a3e" stroke-width="1" stroke-dasharray="3 2"/>
-<text x="104" y="181" text-anchor="middle" dominant-baseline="central" font-family="Rajdhani,sans-serif" font-size="8" fill="#5F5E5A">Pacific ~ Alpha · Atlantic ~ Apex (non-progression)</text>
-</svg>`;
-  return d;
-}
-sections.filter(s => s.id !== 'baseline').forEach(section => {
-      if(section.id==='tier-list'){const td=document.createElement('div');td.className='section';td.id='tier-list';const tt=document.createElement('div');tt.className='section-title';tt.textContent='Tier List';td.appendChild(tt);td.appendChild(renderTierDiagram());contentEl.appendChild(td);return;}
+    sections.filter(s=>s.id!=='baseline').forEach(section=>{
+      if(section.id==='tier-list'){
+        const td=document.createElement('div');td.className='section';td.id='tier-list';
+        const tt=document.createElement('div');tt.className='section-title';tt.textContent='Tier List';
+        td.appendChild(tt);td.appendChild(renderTierDiagram());contentEl.appendChild(td);return;
+      }
       contentEl.appendChild(renderSection(section));
     });
-
-    // Footer
-    const footer = document.createElement('div');
-    footer.className = 'guide-footer';
-    footer.textContent = 'Last reviewed: 26 Mar 2026 | Contact @Rokitur on the Primal Nemesis Discord for corrections. Guide maintained by Rokitur — RokiArkNet';
+    const footer=document.createElement('div');footer.className='guide-footer';
+    footer.textContent='Last reviewed: 26 Mar 2026 | Contact @Rokitur on the Primal Nemesis Discord for corrections. Guide maintained by Rokitur — RokiArkNet';
     contentEl.appendChild(footer);
-
-    document.getElementById('loading').style.display = 'none';
-    contentEl.style.display = 'block';
+    document.getElementById('loading').style.display='none';
+    contentEl.style.display='block';
     buildNav();
-
-    // Active nav
-    const navLinks = document.querySelectorAll('#nav a');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      document.querySelectorAll('.section[id]').forEach(s => {
-        if (window.scrollY >= s.offsetTop - 100) current = s.id;
-      });
-      navLinks.forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-      });
+    const navLinks=document.querySelectorAll('#nav a');
+    window.addEventListener('scroll',()=>{
+      let current='';
+      document.querySelectorAll('.section[id]').forEach(s=>{if(window.scrollY>=s.offsetTop-100)current=s.id;});
+      navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+current);});
     });
-
-  } catch(e) {
-    document.getElementById('loading').textContent = 'Failed to load guide. ' + e.message;
-  }
+  }catch(e){document.getElementById('loading').textContent='Failed to load guide. '+e.message;}
 }
-
 loadGuide();
 </script>
 </body>
