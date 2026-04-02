@@ -76,7 +76,7 @@ const CONTENT_URL='https://raw.githubusercontent.com/rokiarknet/rokiarknet.githu
 const NAV_SECTIONS={
   'Overview':['overview','tier-list','core-mechanics','getting-started'],
   'Progression':['tier-2-tidal','tier-3-rapid','tier-3-5-avatar','tier-4-cyclonic-boss','tier-5-glacial','tier-6-undead','tier-7-soaring','tier-8-maelstrom-boss','tier-9-sumerian','tier-10-tsunami'],
-  'Reference':['loot-dinos','tranqs','weapons-potions','kibble-chart','bosses','creature-list','faq']
+  'Reference':['loot-dinos','tranqs','weapons-potions','kibble-chart','bosses','faq','creature-list']
 };
 const SECTION_LABELS={
   'overview':'Overview',
@@ -256,7 +256,7 @@ async function loadGuide(){
       }
     });
     const footer=document.createElement('div');footer.className='guide-footer';
-    footer.textContent='Guide maintained by Rokitur — RokiArkNet';
+    footer.innerHTML='Guide maintained by Rokitur — RokiArkNet<br>Questions or corrections? Contact @Rokitur on Discord';
     contentEl.appendChild(footer);
     document.getElementById('loading').style.display='none';
     contentEl.style.display='block';

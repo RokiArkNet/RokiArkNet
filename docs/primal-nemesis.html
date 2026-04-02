@@ -293,7 +293,7 @@ async function loadGuide(){
     const crTitle=document.createElement('div');crTitle.className='section-title';crTitle.textContent='Creature Reference';
     crSec.appendChild(crTitle);crSec.appendChild(renderCreatureReference());contentEl.appendChild(crSec);
     const footer=document.createElement('div');footer.className='guide-footer';
-    footer.textContent='Last reviewed: 26 Mar 2026 | Contact @Rokitur on the Primal Nemesis Discord for corrections. Guide maintained by Rokitur — RokiArkNet';
+    footer.innerHTML='Guide maintained by Rokitur — RokiArkNet<br>Questions or corrections? Contact @Rokitur on Discord';
     contentEl.appendChild(footer);
     document.getElementById('loading').style.display='none';
     contentEl.style.display='block';
