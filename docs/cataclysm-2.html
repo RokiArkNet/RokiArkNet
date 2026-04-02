@@ -513,6 +513,7 @@ document.getElementById('copy-btn').addEventListener('click',copyCommand);
 function renderCreatureList(section){
   const div=document.createElement('div');div.className='section';div.id='creature-list';
   const titleDiv=document.createElement('div');titleDiv.className='section-title';titleDiv.textContent='Creature List';div.appendChild(titleDiv);
+  const note=document.createElement('p');note.style.cssText='font-size:12px;color:var(--muted);margin-bottom:16px;font-style:italic;';note.textContent='Click any creature to view its spawn command.';div.appendChild(note);
   const inner=document.createElement('div');
 
   let currentTier=null;
