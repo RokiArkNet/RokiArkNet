@@ -20,27 +20,6 @@ The mod starts off moderately difficult — dodos won't hunt you down, making it
 
 ## tier-list
 
-Runt | Tidal | Rapid | Cyclonic (Boss) | Glacial | Undead | Soaring | Maelstrom (Boss) | Sumerian | Tsunami | BigDaddy | Watcher (Boss) | Atlantean | Ascended
-
-### Tier Stats
-
-| Tier | Damage | Health | Notes |
-|------|--------|--------|-------|
-| T1 Runt | 1.5x | Vanilla | Starting tier |
-| T2 Tidal | 2.5x | 2x | |
-| T3 Rapid | 5x | 3x | |
-| T4 Cyclonic | 7x | 4x | **BOSS GATE** |
-| T5 Glacial | 10x | 6x | |
-| T6 Undead | 15x | 8x | |
-| T7 Soaring | 18x | 10x | |
-| T8 Maelstrom | 20x | 15x | **BOSS GATE** |
-| T9 Sumerian | 25x | 25x | |
-| T10 Tsunami | 30x | 30x | |
-| T11 BigDaddy | 40x | 35x | Coming Soon |
-| T12 Watcher | 50x | 40x | **BOSS GATE** — Coming Soon |
-| T13 Atlantean | 60x | 50x | Coming Soon |
-| T14 Ascended | 70x | 60x | Coming Soon |
-
 ## core-mechanics
 
 ### Tiered Progression
