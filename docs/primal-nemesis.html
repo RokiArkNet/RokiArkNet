@@ -243,89 +243,131 @@ function renderTierDiagram(){
 </g></a>
 
 <!-- Water note box -->
-<rect x="420" y="20" width="180" height="40" rx="3" fill="#14141e" stroke="#2a2a3e" stroke-width="1" stroke-dasharray="3 2"/>
-<text x="510" y="37" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="9" fill="#5F5E5A">Pacific ~ Alpha equivalent</text>
-<text x="510" y="52" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="9" fill="#5F5E5A">Atlantic ~ Apex equivalent</text>
+<rect x="560" y="20" width="180" height="40" rx="3" fill="#14141e" stroke="#2a2a3e" stroke-width="1" stroke-dasharray="3 2"/>
+<text x="650" y="37" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="9" fill="#5F5E5A">Pacific ~ Alpha equivalent</text>
+<text x="650" y="52" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="9" fill="#5F5E5A">Atlantic ~ Apex equivalent</text>
 
-<!-- Arrow down to Elemental row -->
-<path d="M340 60 L340 85 L120 85 L120 110" stroke="#3a3a50" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+<!-- Arrow down to Elemental section -->
+<path d="M340 60 L340 85 L120 85 L120 105" stroke="#3a3a50" stroke-width="1" fill="none" marker-end="url(#arr)"/>
 
-<!-- ROW 2: Elemental wheel (large) -->
+<!-- ELEMENTAL CIRCLE - 6 boxes arranged in hexagon pattern -->
+<text x="120" y="320" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="11" fill="#AFA9EC">ELEMENTAL</text>
+<text x="120" y="335" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="9" fill="#5F5E5A">(any order)</text>
+
+<!-- Storm - top -->
 <a href="#elemental"><g style="cursor:pointer">
-  <rect x="20" y="110" width="200" height="200" rx="4" fill="#1a1a28" stroke="#534AB7" stroke-width="2"/>
-  <image href="images/elemental_wheel_nemesis.png" x="35" y="120" width="170" height="170" preserveAspectRatio="xMidYMid meet"/>
-  <text x="120" y="325" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="12" fill="#AFA9EC">ELEMENTAL</text>
-  <text x="120" y="340" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="9" fill="#5F5E5A">(any order)</text>
+  <rect x="70" y="110" width="100" height="40" rx="3" fill="#1a1a28" stroke="#534AB7" stroke-width="1.5"/>
+  <text x="120" y="135" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="11" font-weight="700" fill="#AFA9EC">Storm</text>
 </g></a>
 
-<line x1="220" y1="210" x2="250" y2="210" stroke="#3a3a50" stroke-width="1" marker-end="url(#arr)"/>
+<!-- Hydro - top right -->
+<a href="#elemental"><g style="cursor:pointer">
+  <rect x="175" y="155" width="100" height="40" rx="3" fill="#1a1a28" stroke="#185FA5" stroke-width="1.5"/>
+  <text x="225" y="180" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="11" font-weight="700" fill="#85B7EB">Hydro</text>
+</g></a>
 
-<!-- Plasma and Ghost - side by side, optional -->
-<text x="330" y="145" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="9" fill="#5F5E5A">optional</text>
-<g opacity="0.65">
-  <a href="#plasma-ghost-plague"><g style="cursor:pointer">
-    <rect x="250" y="160" width="80" height="45" rx="3" fill="#1a1a28" stroke="#534AB7" stroke-width="1"/>
-    <text x="290" y="188" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="11" font-weight="700" fill="#AFA9EC">Plasma</text>
-  </g></a>
-  <a href="#plasma-ghost-plague"><g style="cursor:pointer">
-    <rect x="340" y="160" width="80" height="45" rx="3" fill="#1a1a28" stroke="#5F5E5A" stroke-width="1"/>
-    <text x="380" y="188" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="11" font-weight="700" fill="#B4B2A9">Ghost</text>
-  </g></a>
-</g>
+<!-- Volcanic - bottom right -->
+<a href="#elemental"><g style="cursor:pointer">
+  <rect x="175" y="215" width="100" height="40" rx="3" fill="#1a1a28" stroke="#993C1D" stroke-width="1.5"/>
+  <text x="225" y="240" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="11" font-weight="700" fill="#F0997B">Volcanic</text>
+</g></a>
 
-<!-- Pixies note below Plasma/Ghost -->
-<rect x="295" y="215" width="70" height="25" rx="2" fill="#14141e" stroke="#d946ef" stroke-width="1" stroke-dasharray="3 2"/>
-<text x="330" y="232" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="9" fill="#e879f9">Pixies</text>
+<!-- Frost - bottom -->
+<a href="#elemental"><g style="cursor:pointer">
+  <rect x="70" y="260" width="100" height="40" rx="3" fill="#1a1a28" stroke="#185FA5" stroke-width="1.5"/>
+  <text x="120" y="285" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="11" font-weight="700" fill="#85B7EB">Frost</text>
+</g></a>
 
-<!-- Arrow from Elemental down to Plague (main path) -->
-<path d="M120 310 L120 350 L250 350" stroke="#3a3a50" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+<!-- Nature - bottom left -->
+<a href="#elemental"><g style="cursor:pointer">
+  <rect x="-35" y="215" width="100" height="40" rx="3" fill="#1a1a28" stroke="#3B6D11" stroke-width="1.5"/>
+  <text x="15" y="240" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="11" font-weight="700" fill="#97C459">Nature</text>
+</g></a>
 
-<!-- Plague - REQUIRED -->
+<!-- Earth - top left -->
+<a href="#elemental"><g style="cursor:pointer">
+  <rect x="-35" y="155" width="100" height="40" rx="3" fill="#1a1a28" stroke="#854F0B" stroke-width="1.5"/>
+  <text x="15" y="180" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="11" font-weight="700" fill="#EF9F27">Earth</text>
+</g></a>
+
+<!-- Arrow from Elemental to Plasma/Ghost/Plague group -->
+<line x1="275" y1="210" x2="305" y2="210" stroke="#3a3a50" stroke-width="1" marker-end="url(#arr)"/>
+
+<!-- PLASMA / GHOST / PLAGUE GROUP - boxed together -->
+<rect x="305" y="135" width="200" height="150" rx="4" fill="none" stroke="#A32D2D" stroke-width="1" stroke-dasharray="4 2"/>
+<text x="405" y="152" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="10" fill="#F09595">PLASMA / GHOST / PLAGUE</text>
+
+<!-- Plasma - optional -->
+<a href="#plasma-ghost-plague"><g style="cursor:pointer" opacity="0.65">
+  <rect x="315" y="165" width="85" height="40" rx="3" fill="#1a1a28" stroke="#534AB7" stroke-width="1"/>
+  <text x="357" y="182" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="10" font-weight="700" fill="#AFA9EC">Plasma</text>
+  <text x="357" y="196" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="7" fill="#5F5E5A">optional</text>
+</g></a>
+
+<!-- Ghost - optional -->
+<a href="#plasma-ghost-plague"><g style="cursor:pointer" opacity="0.65">
+  <rect x="410" y="165" width="85" height="40" rx="3" fill="#1a1a28" stroke="#5F5E5A" stroke-width="1"/>
+  <text x="452" y="182" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="10" font-weight="700" fill="#B4B2A9">Ghost</text>
+  <text x="452" y="196" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="7" fill="#5F5E5A">optional</text>
+</g></a>
+
+<!-- Arrows from Plasma/Ghost down to Plague -->
+<line x1="357" y1="205" x2="357" y2="220" stroke="#5F5E5A" stroke-width="0.75" stroke-dasharray="5 3" marker-end="url(#arr-dim)"/>
+<line x1="452" y1="205" x2="452" y2="220" stroke="#5F5E5A" stroke-width="0.75" stroke-dasharray="5 3" marker-end="url(#arr-dim)"/>
+
+<!-- Plague - required -->
 <a href="#plasma-ghost-plague"><g style="cursor:pointer">
-  <rect x="250" y="325" width="90" height="50" rx="3" fill="#1a1a28" stroke="#e8580a" stroke-width="2"/>
-  <text x="295" y="356" text-anchor="middle" font-family="Orbitron,monospace" font-size="12" font-weight="700" fill="#e8580a">Plague</text>
+  <rect x="340" y="225" width="130" height="50" rx="3" fill="#1a1a28" stroke="#e8580a" stroke-width="2"/>
+  <text x="405" y="256" text-anchor="middle" font-family="Orbitron,monospace" font-size="12" font-weight="700" fill="#e8580a">Plague</text>
 </g></a>
-<line x1="340" y1="350" x2="370" y2="350" stroke="#3a3a50" stroke-width="1" marker-end="url(#arr)"/>
+
+<!-- Pixies note -->
+<rect x="315" y="340" width="70" height="25" rx="2" fill="#14141e" stroke="#d946ef" stroke-width="1" stroke-dasharray="3 2"/>
+<text x="350" y="357" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="9" fill="#e879f9">Pixies</text>
+
+<!-- Arrow from Plague group to Bionic -->
+<line x1="505" y1="210" x2="530" y2="210" stroke="#3a3a50" stroke-width="1" marker-end="url(#arr)"/>
 
 <!-- Bionic -->
 <a href="#bionic"><g style="cursor:pointer">
-  <rect x="370" y="325" width="90" height="50" rx="3" fill="#1a1a28" stroke="#e8580a" stroke-width="2"/>
-  <text x="415" y="356" text-anchor="middle" font-family="Orbitron,monospace" font-size="12" font-weight="700" fill="#e8580a">Bionic</text>
-</g></a>
-<line x1="460" y1="350" x2="490" y2="350" stroke="#3a3a50" stroke-width="1" marker-end="url(#arr)"/>
-
-<!-- Celestial/Demonic - same tier, any order (side by side) -->
-<text x="580" y="305" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="9" fill="#5F5E5A">any order</text>
-<a href="#celestial-demonic"><g style="cursor:pointer">
-  <rect x="490" y="320" width="90" height="55" rx="3" fill="#1a1a28" stroke="#e8580a" stroke-width="2"/>
-  <text x="535" y="354" text-anchor="middle" font-family="Orbitron,monospace" font-size="11" font-weight="700" fill="#e8580a">Celestial</text>
-</g></a>
-<a href="#celestial-demonic"><g style="cursor:pointer">
-  <rect x="590" y="320" width="90" height="55" rx="3" fill="#1a1a28" stroke="#e8580a" stroke-width="2"/>
-  <text x="635" y="354" text-anchor="middle" font-family="Orbitron,monospace" font-size="11" font-weight="700" fill="#e8580a">Demonic</text>
+  <rect x="530" y="185" width="80" height="50" rx="3" fill="#1a1a28" stroke="#e8580a" stroke-width="2"/>
+  <text x="570" y="216" text-anchor="middle" font-family="Orbitron,monospace" font-size="12" font-weight="700" fill="#e8580a">Bionic</text>
 </g></a>
 
-<line x1="680" y1="350" x2="700" y2="350" stroke="#3a3a50" stroke-width="1" marker-end="url(#arr)"/>
+<!-- Arrow down to Celestial/Demonic row -->
+<path d="M570 235 L570 280 L450 280 L450 310" stroke="#3a3a50" stroke-width="1" fill="none" marker-end="url(#arr)"/>
+
+<!-- Celestial/Demonic - side by side, any order -->
+<text x="530" y="305" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="9" fill="#5F5E5A">any order</text>
+<a href="#celestial-demonic"><g style="cursor:pointer">
+  <rect x="420" y="315" width="90" height="50" rx="3" fill="#1a1a28" stroke="#e8580a" stroke-width="2"/>
+  <text x="465" y="346" text-anchor="middle" font-family="Orbitron,monospace" font-size="10" font-weight="700" fill="#e8580a">Celestial</text>
+</g></a>
+<a href="#celestial-demonic"><g style="cursor:pointer">
+  <rect x="520" y="315" width="90" height="50" rx="3" fill="#1a1a28" stroke="#e8580a" stroke-width="2"/>
+  <text x="565" y="346" text-anchor="middle" font-family="Orbitron,monospace" font-size="10" font-weight="700" fill="#e8580a">Demonic</text>
+</g></a>
+
+<line x1="610" y1="340" x2="640" y2="340" stroke="#3a3a50" stroke-width="1" marker-end="url(#arr)"/>
 
 <!-- Godly -->
 <a href="#godly"><g style="cursor:pointer">
-  <rect x="700" y="320" width="50" height="55" rx="3" fill="#1a1a28" stroke="#e8580a" stroke-width="3"/>
-  <text x="725" y="340" text-anchor="middle" font-family="Orbitron,monospace" font-size="10" font-weight="700" fill="#e8580a">God</text>
-  <text x="725" y="358" text-anchor="middle" font-family="Orbitron,monospace" font-size="10" font-weight="700" fill="#e8580a">ly</text>
+  <rect x="640" y="315" width="80" height="50" rx="3" fill="#1a1a28" stroke="#e8580a" stroke-width="3"/>
+  <text x="680" y="346" text-anchor="middle" font-family="Orbitron,monospace" font-size="12" font-weight="700" fill="#e8580a">Godly</text>
 </g></a>
 
 <!-- Legend -->
-<rect x="620" y="110" width="130" height="100" rx="4" fill="#14141e" stroke="#2a2a3e" stroke-width="1"/>
-<text x="630" y="128" font-family="Orbitron,monospace" font-size="9" fill="#7878a0">LEGEND</text>
+<rect x="560" y="80" width="180" height="95" rx="4" fill="#14141e" stroke="#2a2a3e" stroke-width="1"/>
+<text x="570" y="100" font-family="Orbitron,monospace" font-size="9" fill="#7878a0">LEGEND</text>
 
-<rect x="630" y="138" width="14" height="14" fill="#1a1a28" stroke="#e8580a" stroke-width="2"/>
-<text x="650" y="149" font-family="Rajdhani,sans-serif" font-size="9" fill="#d8d8e8">Main tier</text>
+<rect x="570" y="110" width="14" height="14" fill="#1a1a28" stroke="#e8580a" stroke-width="2"/>
+<text x="590" y="121" font-family="Rajdhani,sans-serif" font-size="9" fill="#d8d8e8">Main tier</text>
 
-<rect x="630" y="158" width="14" height="14" fill="#1a1a28" stroke="#534AB7" stroke-width="1.5"/>
-<text x="650" y="169" font-family="Rajdhani,sans-serif" font-size="9" fill="#d8d8e8">Elemental</text>
+<rect x="570" y="128" width="14" height="14" fill="#1a1a28" stroke="#534AB7" stroke-width="1.5"/>
+<text x="590" y="139" font-family="Rajdhani,sans-serif" font-size="9" fill="#d8d8e8">Elemental tier</text>
 
-<rect x="630" y="178" width="14" height="14" fill="#1a1a28" stroke="#5F5E5A" stroke-width="1" opacity="0.65"/>
-<text x="650" y="189" font-family="Rajdhani,sans-serif" font-size="9" fill="#d8d8e8">Optional</text>
+<rect x="570" y="146" width="14" height="14" fill="#1a1a28" stroke="#5F5E5A" stroke-width="1" opacity="0.65"/>
+<text x="590" y="157" font-family="Rajdhani,sans-serif" font-size="9" fill="#d8d8e8">Optional tier</text>
 
 </svg>`;
   return wrap;
