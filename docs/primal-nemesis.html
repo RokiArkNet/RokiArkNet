@@ -204,7 +204,7 @@ function buildNav(){
 function renderTierDiagram(){
   const wrap=document.createElement('div');
   wrap.style.cssText='background:#14141e;border:1px solid #2a2a3e;padding:20px;margin:8px 0 24px;overflow-x:auto;border-radius:4px;';
-  wrap.innerHTML=`<svg width="100%" viewBox="0 0 440 720" xmlns="http://www.w3.org/2000/svg" style="max-width:440px;display:block;margin:0 auto;">
+  wrap.innerHTML=`<svg width="100%" viewBox="0 0 440 695" xmlns="http://www.w3.org/2000/svg" style="max-width:440px;display:block;margin:0 auto;">
 <defs>
   <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
     <path d="M2 1L8 5L2 9" fill="none" stroke="#3a3a50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -356,14 +356,6 @@ function renderTierDiagram(){
 <!-- Pixies note -->
 <rect x="330" y="473" width="75" height="25" rx="2" fill="#14141e" stroke="#d946ef" stroke-width="1" stroke-dasharray="3 2"/>
 <text x="367" y="490" text-anchor="middle" font-family="Rajdhani,sans-serif" font-size="9" fill="#e879f9">Pixies</text>
-
-<!-- Legend -->
-<text x="30" y="705" font-family="Orbitron,monospace" font-size="9" fill="#7878a0">LEGEND:</text>
-<rect x="90" y="694" width="12" height="12" fill="#1a1a28" stroke="#e8580a" stroke-width="2"/>
-<text x="108" y="704" font-family="Rajdhani,sans-serif" font-size="9" fill="#d8d8e8">Required</text>
-<rect x="170" y="694" width="12" height="12" fill="#1a1a28" stroke="#5F5E5A" stroke-width="1" opacity="0.65"/>
-<text x="188" y="704" font-family="Rajdhani,sans-serif" font-size="9" fill="#d8d8e8">Optional</text>
-<text x="260" y="704" font-family="Rajdhani,sans-serif" font-size="9" fill="#5F5E5A">Elemental/Plague/Celestial/Demonic have tier-specific colors</text>
 
 </svg>`;
   return wrap;
