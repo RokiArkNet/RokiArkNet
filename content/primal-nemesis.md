@@ -356,6 +356,9 @@ Adult Titan — Gains ALL special attacks from boss variant. Ideal for Elemental
 **How does the quality ranking system work?** Common → Uncommon → Rare → Epic → Legendary → Divine → Ancient. Divine is the new high-end tier above Legendary. Ancient only obtainable through quests.
 
 **Tranq Ammo Values:**
-Tranq Darts (Longneck) — Alpha 1.1k–1.9k | Apex 1.9k–5.7k | Elemental 4.6k–15.4k | Demonic/Celestial 23k–85k
-Tranq Bullets (Sniper) — Alpha 1.2k–4.4k | Apex 2.4k–8.2k | Elemental 5k–17.9k | Demonic/Celestial 25k–87.5k
-Compound Tranq Arrows — Alpha 1.5k–6.9k | Apex 3k–10.7k | Elemental 5.9k–22.9k | Demonic/Celestial 30k–97.5k
+
+| Ammo Type | Alpha | Apex | Elemental | Demonic/Celestial |
+|-----------|-------|------|-----------|-------------------|
+| Tranq Darts (Longneck) | 1.1k–1.9k | 1.9k–5.7k | 4.6k–15.4k | 23k–85k |
+| Tranq Bullets (Sniper) | 1.2k–4.4k | 2.4k–8.2k | 5k–17.9k | 25k–87.5k |
+| Compound Tranq Arrows | 1.5k–6.9k | 3k–10.7k | 5.9k–22.9k | 30k–97.5k |
