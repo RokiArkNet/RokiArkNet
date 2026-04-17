@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RokiArkNet — ArkApi Plugins</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Orbitron:wght@700;900&display=swap');
+:root{--bg:#0d0d12;--surface:#14141e;--card:#1a1a28;--border:#2a2a3e;--orange:#e8580a;--amber:#f0a020;--text:#d8d8e8;--muted:#7878a0;--green:#4caf50;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;font-size:16px;line-height:1.7;min-height:100vh;}
+.container{max-width:900px;margin:0 auto;padding:60px 24px 120px;}
+.back-link{display:inline-block;color:var(--orange);text-decoration:none;margin-bottom:20px;font-size:14px;}
+.back-link:hover{text-decoration:underline;}
+#hero{text-align:center;padding:20px 0 40px;}
+#hero h1{font-family:'Orbitron',monospace;font-size:36px;font-weight:900;color:#fff;text-shadow:0 0 40px rgba(232,88,10,.3);letter-spacing:3px;margin-bottom:16px;}
+#hero p{color:var(--muted);font-size:18px;max-width:600px;margin:0 auto;}
+.section{margin-bottom:48px;}
+.section-title{font-family:'Orbitron',monospace;font-size:12px;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.plugin-card{background:var(--card);border:1px solid var(--border);padding:24px;margin-bottom:16px;}
+.plugin-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.plugin-name{font-family:'Orbitron',monospace;font-size:18px;font-weight:700;color:#fff;letter-spacing:1px;}
+.plugin-license{font-size:12px;padding:4px 10px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;}
+.license-annual{background:var(--orange);color:#fff;}
+.license-free{background:var(--green);color:#fff;}
+.plugin-desc{color:var(--muted);margin-bottom:16px;}
+.plugin-features{list-style:none;margin-bottom:16px;}
+.plugin-features li{padding:4px 0;color:var(--text);}
+.plugin-features li::before{content:"▸ ";color:var(--orange);}
+.plugin-commands{background:var(--surface);padding:12px 16px;font-family:monospace;font-size:14px;color:var(--amber);border-left:3px solid var(--orange);}
+.footer{text-align:center;padding-top:40px;border-top:1px solid var(--border);color:var(--muted);font-size:13px;}
+.footer a{color:var(--orange);text-decoration:none;}
+.footer a:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← Back to Guides</a>
+  
+  <div id="hero">
+    <h1>ARKAPI PLUGINS</h1>
+    <p>Custom server plugins for ARK: Survival Ascended</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Licensed Plugins</div>
+    
+    <div class="plugin-card">
+      <div class="plugin-header">
+        <div class="plugin-name">EngramControl</div>
+        <span class="plugin-license license-annual">Annual License</span>
+      </div>
+      <p class="plugin-desc">Block engrams from being learned, and unlock them by killing specific creatures.</p>
+      <ul class="plugin-features">
+        <li>Block any engram by name pattern</li>
+        <li>Kill-based unlocks (kill bosses to unlock Tek)</li>
+        <li>Persistent unlocks survive mindwipes</li>
+        <li>Free mode: 5 blocked engrams, no kill unlocks</li>
+      </ul>
+      <div class="plugin-commands">EngramControl.Reload | EngramControl.Find &lt;pattern&gt;</div>
+    </div>
+
+    <div class="plugin-card">
+      <div class="plugin-header">
+        <div class="plugin-name">DinoLoot</div>
+        <span class="plugin-license license-annual">Annual License</span>
+      </div>
+      <p class="plugin-desc">Add configurable loot drops to dino corpses when killed.</p>
+      <ul class="plugin-features">
+        <li>Custom loot pools per dino type</li>
+        <li>Quality ranges and blueprint chances</li>
+        <li>Pattern matching for dino names</li>
+        <li>Loot goes directly to killer's inventory</li>
+      </ul>
+      <div class="plugin-commands">DinoLoot.Reload | DinoLoot.List</div>
+    </div>
+
+    <div class="plugin-card">
+      <div class="plugin-header">
+        <div class="plugin-name">TekUnlock</div>
+        <span class="plugin-license license-annual">Annual License</span>
+      </div>
+      <p class="plugin-desc">Unlock Tek engrams by killing specific creatures.</p>
+      <ul class="plugin-features">
+        <li>Kill-based Tek unlocks</li>
+        <li>Radius detection for nearby players</li>
+        <li>Chat notifications on unlock</li>
+      </ul>
+      <div class="plugin-commands">TekUnlock.Reload</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Free Plugins</div>
+    
+    <div class="plugin-card">
+      <div class="plugin-header">
+        <div class="plugin-name">DinoLevelOverride</div>
+        <span class="plugin-license license-free">Free</span>
+      </div>
+      <p class="plugin-desc">Override wild dino level distributions for custom spawning.</p>
+      <ul class="plugin-features">
+        <li>Custom level ranges per dino type</li>
+        <li>Weighted distribution curves</li>
+      </ul>
+      <div class="plugin-commands">DinoLevelOverride.Reload</div>
+    </div>
+
+    <div class="plugin-card">
+      <div class="plugin-header">
+        <div class="plugin-name">RiderProtection</div>
+        <span class="plugin-license license-free">Free</span>
+      </div>
+      <p class="plugin-desc">Protect mounted players from taking damage.</p>
+      <ul class="plugin-features">
+        <li>Configurable damage reduction</li>
+        <li>Per-dino protection settings</li>
+      </ul>
+      <div class="plugin-commands">RiderProtection.Reload</div>
+    </div>
+
+    <div class="plugin-card">
+      <div class="plugin-header">
+        <div class="plugin-name">ItemExchange</div>
+        <span class="plugin-license license-free">Free</span>
+      </div>
+      <p class="plugin-desc">Exchange items between players with configurable rates.</p>
+      <ul class="plugin-features">
+        <li>Configurable exchange ratios</li>
+        <li>Any item as currency</li>
+      </ul>
+      <div class="plugin-commands">ItemExchange.Reload</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Licensing</div>
+    <p style="color:var(--muted);margin-bottom:16px;">Annual licenses unlock full plugin features. Purchase at:</p>
+    <p><a href="https://ko-fi.com/rokiarknet" style="color:var(--orange);font-size:18px;">ko-fi.com/rokiarknet</a></p>
+  </div>
+
+  <div class="footer">
+    Plugins maintained by Rokitur — RokiArkNet<br>
+    <a href="https://discord.gg/rokiarknet">Discord</a> | <a href="https://github.com/RokiArkNet">GitHub</a>
+  </div>
+</div>
+</body>
+</html>
