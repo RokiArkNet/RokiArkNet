@@ -284,23 +284,26 @@ Craft different tame tokens until you can farm Ancient and Futuristic Fragments 
 
 ### Taming Tsunami Creatures
 
-**Requirements:**
+**Progression flow:**
 
-- Sumerian Fluids — from tamed Sumerian dinos
-- Tsunami Pearls — kill wild Tsunami creatures
-- Genetic Paste — from wild Tsunami kills
+1. Craft Genetic Codex for Tsunami Kibble
+2. Craft Tsunami Kibble
+3. Tame a Tsunami Creature (T10)
+4. Farm Tsunami Fluids, Pearls and Genetic Paste
+5. Farm new Tsunami Resources — Scales, Fur, Hide, Fisheye and Feathers
+6. Craft Tsunami Saddles
 
-**Craft:**
+**Farming new T10 Resources:** Tame **female** Tsunami creatures — each generates a resource based on its exterior type:
 
-- Genetic Codex — intermediate crafting material
-- Tsunami Kibble — requires Genetic Codex
+| Resource | Exterior Type | Example Tames |
+|----------|---------------|---------------|
+| Hide     | Leathery      | Tsunami Pteranodon |
+| Fur      | Fur-bearing   | Tsunami Unicorn, Thyla, Mammoth |
+| Scales   | Scaled        | Tsunami Dragon, Indominus Rex, Crystal Wyvern |
+| Fisheye  | Fish          | Tsunami Plesio |
+| Feathers | Feathery      | Tsunami Argentavis, Therizinosaur |
 
-**New Resources (Tier 10):**
-
-- Tsunami Scales
-- Tsunami Fur
-- Tsunami Hide
-- Tsunami Feathers
+> Mate-boost with a male of the same tier/species to raise the drop rate (works like passive eggs in other mods).
 
 **Saddles:** Tsunami Saddles released — see Equipment section.
 
