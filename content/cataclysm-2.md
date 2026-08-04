@@ -485,11 +485,17 @@ Bosses unlock Tek Engrams at Tier 4 Cyclonic and provide materials for continued
 
 ### Cyclonic 2.0 Bosses (Side Progression)
 
-A side-progression series for upgrading existing boss tames outside the main tier-up flow. Craft each 2.0 boss token in your inventory, defeat the upgraded boss, and receive a 2.0 summon token (auto-tame). The 2.0 fights drop the **Cyclonic Fragment**, which will be needed for 3.0 boss fights when they release.
+A side-progression series for upgrading existing boss tames outside the main tier-up flow. Craft each 2.0 boss token in your inventory, defeat the upgraded boss, and receive a 2.0 summon token (auto-tame). The 2.0 fights drop the **Cyclonic Fragment**, feeding the 3.0 boss crafting recipes.
 
 **Cyclonic Dragon 2.0** — first of the 2.0 series (patch 149–150).
 
 **Cyclonic Griffin 2.0 / Dodorexy 2.0 / Rex 2.0 / Giga 2.0** — patch 168 additions. Enhanced stats and damage compared to their 1.0 counterparts.
+
+### Cyclonic 3.0 Bosses (Side Progression)
+
+Patch 170 upgrade path for the 2.0 series. Craft each 3.0 boss token — requires the previous 2.0 battle completed **twice**, a fertilized breeding-pair egg of that 2.0 creature, and Cyclonic Fragments. Defeat the 3.0 boss (stay in range) to receive an **insta-tame** token.
+
+**Cyclonic Griffin 3.0 / Dodorexy 3.0 / Rex 3.0 / Giga 3.0 / Dragon 3.0** — released patch 170. The Cyclonic Giga 3.0 and Cyclonic Rex 3.0 bite cuts through stone. These make the Maelstrom (T8) boss more manageable for players who put in the work.
 
 ### Maelstrom Bosses (T8)
 
@@ -638,6 +644,8 @@ Acrocanthosaurus, Ankylosaurus, Argentavis, Bronto, Bulbdog, Crystal Wyvern, Dae
 **Boss:** Cyclonic Gorilla
 
 **Bosses 2.0 (Side Progression):** Cyclonic Dodorexy 2.0, Cyclonic Dragon 2.0, Cyclonic Giga 2.0, Cyclonic Griffin 2.0, Cyclonic Rex 2.0
+
+**Bosses 3.0 (Side Progression):** Cyclonic Dodorexy 3.0, Cyclonic Dragon 3.0, Cyclonic Giga 3.0, Cyclonic Griffin 3.0, Cyclonic Rex 3.0
 
 **Tames:** Basilisk, Basilosaurus, DodoRexy, Dragon, Giganotosaurus, Griffin, Ice Jumper, Mek, Phoenix, Quetzal, Raptor, Rex, Rhynio, Rock Drake, Rock Golem, Shoulder Dragon (Winter), Spider, Spindles, Toad, Wyvern (Lightning)
 
