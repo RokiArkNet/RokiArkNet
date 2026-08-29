@@ -146,6 +146,8 @@ Three Guardian bosses exist: Broodmother, Ferox, and Spino.
 
 Defeating all three Prime Guardians unlocks Nuclear and Vampiric kibble engrams.
 
+Killing each Prime Guardian now spawns a **tameable variant** on the spot — Tameable Prime Broodmother, Ferox, and Spino. Each tameable Prime Guardian can later be **evolved into its Primordial counterpart** once you reach the Primordial tier.
+
 ## nuclear-vampiric
 
 Nuclear and Vampiric creatures **cannot be tranqed with darts or arrows** — they require tier-matched Rocket Launchers firing tranq rockets.
@@ -172,6 +174,10 @@ Wardens tier introduces wild-only boss spawning.
 ### Wild Boss Spawning
 
 Killing a wild Warden boss spawns a tameable version on the spot — knock it out and tame it with the appropriate kibble.
+
+### Tameable Warden Kaiju
+
+Killing the Warden Kaiju boss now spawns a **Tameable Warden Kaiju** on the spot. Once tamed, it can be **evolved into the Tameable Spectral Warden Kaiju**.
 
 ### Spectral Evolution
 
@@ -231,17 +237,43 @@ Defeating wild Spectral Wardens rewards:
 - Random assortment of Tranqs
 - Random assortment of Spectral Warden Saddles
 
+## spectral-tiered-boss
+
+The **Spectral Tiered Boss** — a giant Spectral Kraken — is a new gate between Spectral Wardens and the Juggernaut. Defeating it unlocks the items needed to summon the Juggernaut.
+
+**Summon:** Bench-crafted Spectral Kraken summon.
+
 ## juggernaut
 
-The Juggernaut is the **final boss** of progression — fought after Spectral Wardens.
+The Juggernaut sits between Spectral Wardens and the new Primordial tier. Unlocked by defeating the Spectral Tiered Boss.
 
 ### Boss Fight
 
-The Juggernaut now matches Spectral Wardens in strength and is a significant challenge. Defeating it drops a **Tameable Juggernaut Saddle**.
+The Juggernaut matches Spectral Wardens in strength and is a significant challenge. Defeating it drops a **Tameable Juggernaut Saddle** *and* a **Primordial Factory** — the structure that unlocks the Primordial tier.
 
 ### Tameable Juggernaut
 
 After the Juggernaut boss is defeated, a **Tameable Juggernaut** spawns. Tame it with **Juggernaut Kibble**.
+
+## primordial
+
+Primordial is the new endgame tier — unlocked by the **Primordial Factory** dropped by the Juggernaut.
+
+### Primordial Creatures
+
+Eight Primordial tames are available: **DefenseUnit, Ferox, Mammoth, Griffin, Broodmother, Spino, Saber, Wyvern**. Each also spawns as a **wild BOSS variant** in the world.
+
+### Evolution Path
+
+Each Primordial creature can be obtained by **evolving its Prime counterpart** — Prime DefenseUnit → Primordial DefenseUnit, Prime Ferox → Primordial Ferox, and so on. The tameable Prime Guardians (Broodmother, Ferox, Spino) tamed at the Prime Guardians step feed directly into this evolution.
+
+### Primordial Deity
+
+The **Primordial Deity** is the new final boss of progression. It **flies** — bring flying tames.
+
+### Tameable Primordial Deity
+
+After the Primordial Deity is defeated, a **Tameable Primordial Deity** spawns. It has **3 extra special attacks** on top of the normal moveset — use **X** (or **Left Joystick** on controller) for the last special.
 
 ## faq
 
@@ -309,7 +341,7 @@ All Tribesman are now instantly aggressive on sight — no provocation required.
 
 From Necrotic tier upward, your tamed creatures can be **cultivated through 10 Paragon Levels** — a separate progression layered on top of normal taming. Higher levels boost stats and unlock new abilities.
 
-**Level Progression** — Level up by killing wild creatures with your dino. A dedicated UI shows your current Paragon level and progress to the next.
+**Level Progression** — Level up by killing wild creatures with your dino. A dedicated UI shows your current Paragon level and progress to the next. As of patch 2026-08-29, the kill counts required per level have been reduced across every tier (Necrotic → Spectral) — fewer kills to reach the next level.
 
 | Level | Reward |
 |-------|--------|
@@ -326,4 +358,4 @@ Powerups are available on every tier from Necrotic upward: Necrotic, Grenadier, 
 
 ### Hostile System
 
-Killing Tribesman triggers a **hostile counter** (icon appears in bottom right). As your hostility increases (x2, x4, etc.), more Tribesman will actively hunt you down and their weapons progressively upgrade from spears to longnecks. On servers, hostility persists until cleared. In singleplayer, it times out after 10 seconds.
+Killing Tribesman triggers a **hostile counter** (icon appears in bottom right). As your hostility increases (x2, x4, etc.), more Tribesman will actively hunt you down and their weapons progressively upgrade from spears to longnecks. The buff is **permanent by design** — it doesn't decay or clear — the system exists specifically to keep Tribesman consistently aggressive toward the player who triggered it.
