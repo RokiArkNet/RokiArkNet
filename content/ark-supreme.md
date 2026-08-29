@@ -6,7 +6,7 @@ All stats based on Level 150 unboosted creatures — no server multipliers or cu
 
 ## tier-list
 
-Elite | Savage | Toxic | Berserk | Necrotic | Grenadier | Prime | Nuclear | Vampiric | Wardens | Hellfire | DarkGod | Corrupted Darkgods | Spectral Wardens
+Elite | Savage | Toxic | Berserk | Necrotic | Grenadier | Prime | Nuclear | Vampiric | Wardens | Hellfire | DarkGod | Corrupted Darkgods | Spectral Wardens | Primordial
 
 ## getting-started
 
