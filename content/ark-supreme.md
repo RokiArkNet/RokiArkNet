@@ -267,7 +267,7 @@ Eight Primordial tames are available: **DefenseUnit, Ferox, Mammoth, Griffin, Br
 
 Each Primordial creature can be obtained by **evolving its Prime counterpart** — Prime DefenseUnit → Primordial DefenseUnit, Prime Ferox → Primordial Ferox, and so on. The tameable Prime Guardians (Broodmother, Ferox, Spino) tamed at the Prime Guardians step feed directly into this evolution.
 
-### Primordial Deity
+## primordial-deity
 
 The **Primordial Deity** is the new final boss of progression. It **flies** — bring flying tames.
 
