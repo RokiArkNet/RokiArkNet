@@ -265,7 +265,11 @@ Eight Primordial tames are available: **DefenseUnit, Ferox, Mammoth, Griffin, Br
 
 ### Evolution Path
 
-Each Primordial creature can be obtained by **evolving its Prime counterpart** — Prime DefenseUnit → Primordial DefenseUnit, Prime Ferox → Primordial Ferox, and so on. The tameable Prime Guardians (Broodmother, Ferox, Spino) tamed at the Prime Guardians step feed directly into this evolution.
+Each Primordial creature is obtained by **evolving its Prime counterpart** using a **Primordial Cube** — Prime DefenseUnit → Primordial DefenseUnit, Prime Ferox → Primordial Ferox, and so on. The tameable Prime Guardians (Broodmother, Ferox, Spino) tamed at the Prime Guardians step feed directly into this evolution.
+
+### Primordial Factory
+
+The **Primordial Factory** (dropped by the Juggernaut) is what produces the **Primordial Cube** — the evolution catalyst required to convert Prime tames into their Primordial forms. Same pattern as the Grenadier Factory producing Grenadier Herb.
 
 ## primordial-deity
 
