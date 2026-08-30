@@ -6,7 +6,7 @@ All stats based on Level 150 unboosted creatures — no server multipliers or cu
 
 ## tier-list
 
-Toxic/Beta | Alpha | Electric/Volcanic/Hydro | Shadow/Fairy | Mythic/Fabled/Legendary | Angelic/Demonic | Origin | Spirit/Chaos | Nightmare
+Toxic/Beta | Alpha | Electric/Volcanic/Hydro | Shadow/Fairy | Mythic/Fabled/Legendary | Angelic/Demonic | Origin | Colossus | Spirit/Chaos | Nightmare
 
 ## getting-started
 
@@ -216,6 +216,18 @@ The most powerful Origin Boss, summoned with crafted scrolls at the Primal Smith
 **Tameable Draconis** — Chance to drop Tameable Token. Requires Origin Artifact from Mr. Artifact the Original.
 
 > Dodoreapers take 80% reduced damage unless affected by Charged Light — bring a Glowtail or other charge pet.
+
+## colossus
+
+Colossus bosses are elemental titans introduced in the 2026-08-04 Major Content Update. In-game notes call them out as summoned *after* the Draconis "The Original" fight, but their crafting recipe and stat curve sit them **before** Spirit & Chaos in practical progression.
+
+### Colossus Bosses
+
+Three wild elemental titans — **Volcanic Colossus, Electric Colossus, Hydro Colossus** — summoned via bench-crafted TITAN summon items.
+
+### Tameable Colossus
+
+Tameable versions of all three spawn WILD. Knock them out to tame — they do not use the kill-summons-tameable pattern.
 
 ## spirit-chaos
 
