@@ -423,9 +423,9 @@ Pixies function as passive companions. Equip the orb directly to the Pixie to ac
 
 ### How to Tame a Titan
 
-1. Defeat the Elemental Boss — Unlocks the Elemental Incubator Engram (Elemental Incubators are crafted in the Primal Incubator) and drops the Boss Skull (required for Whelpling recipe)
+1. Defeat the Elemental Boss — Unlocks the Elemental Incubator Engram (Elemental Incubators are crafted in the Primal Incubator) and drops the Boss Skull (required for Whelpling recipe). **Optional as of the 2026-09-01 patch** — see step 2.
 
-2. Hunt a Wild Elemental Youngling — Cannot be crafted or summoned. On kill automatically drops an Elemental Heart into your inventory.
+2. Hunt a Wild Elemental Youngling — Cannot be crafted or summoned. On kill automatically drops an Elemental Heart into your inventory. **As of the 2026-09-01 patch**, killing a Youngling also unlocks a **tameable titan egg** for that element — this bypasses the boss defeat requirement in step 1.
 
 3. Place Incubator strategically — Keep one at base for recipes (DO NOT hatch from it) and one in an open area for the actual hatch.
 
