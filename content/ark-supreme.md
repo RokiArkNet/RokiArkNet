@@ -100,7 +100,7 @@ Necrotic is where things change. Two new systems unlock here: **Paragon Levels**
 Wild bees are hostile and attack on sight. To set up honey production:
 
 1. **Kill wild bees** to collect a small amount of honey
-2. **Craft Bee Kibble** from that honey at the Supreme Bench
+2. **Craft Necrotic Kibble** from that honey at the Supreme Bench
 3. **Tame a Queen Bee** with the kibble for sustained honey production
 
 Once tamed, place the tier's rare flowers (crafted at the Supreme Bench) in the bee's inventory — the bee produces honey automatically.
