@@ -354,7 +354,7 @@ From Necrotic tier upward, your tamed creatures can be **cultivated through 10 P
 | 6–9 | Stat boosts each level |
 | 10 | Unlocks the dino's **Supreme version** — major stat upgrade |
 
-**Powerup Ability** — Dinos from Necrotic tier and up are **powered down** at tame time. After completing Paragon level 5 *and* defeating a Paragon Boss with that creature, a button combination unlocks that toggles it between powered-up and powered-down states. Powered-up applies both a visual change and a stat boost.
+**Powerup Ability** — Dinos from Necrotic tier and up are **powered down** at tame time. After completing Paragon level 5 *and* defeating a Paragon Boss with that creature, a button combination unlocks that toggles it between powered-up and powered-down states. Powered-up applies a visual change, **+30% resistance**, and a speed boost.
 
 **Paragon Bosses** — 80 Paragon Bosses can be summoned across the higher tiers. Each summon spawns a random higher-tiered creature with its powerup active — these are the gates required to unlock your dino's powerup at level 5.
 
